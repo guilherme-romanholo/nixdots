@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.base.audio;
+  cfg = config.base.sound;
 in {
-  options.base.audio = {
+  options.base.sound = {
     enable = lib.mkEnableOption "Enable Sound";
 
     pipewire = lib.mkOption {
