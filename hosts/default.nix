@@ -7,6 +7,8 @@
       profile = "personal";
       bootmode = "grub";
       grubDevice = "/dev/vda";
+      systemVersion = "24.05";
+      videoDriver = "amdgpu";
       # Locale
       locale = "pt_BR.UTF-8";
       timezone = "America/Sao_Paulo";
