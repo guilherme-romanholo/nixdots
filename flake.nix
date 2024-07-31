@@ -69,7 +69,7 @@
           };
         };
       })
-      hosts);
+      hosts.hosts);
 
     # NixOS Home Configurations
     # homeConfigurations = lib.attrsets.mergeAttrsList (map (host:

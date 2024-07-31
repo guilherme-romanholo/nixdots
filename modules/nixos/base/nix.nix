@@ -5,9 +5,9 @@
   config,
   ...
 }: let
-  cfg = config.base.nixconf;
+  cfg = config.base.nix;
 in {
-  options.base.nixconf = {
+  options.base.nix = {
     enable = lib.mkEnableOption "Enable Nix";
 
     extraSubstituters = lib.mkOption {
