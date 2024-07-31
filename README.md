@@ -1,2 +1,2 @@
-# nixdots
+# NixOS Dotfiles
 My NixOS Configuration
