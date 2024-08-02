@@ -10,10 +10,16 @@ in {
   options.base.nix = {
     enable = lib.mkEnableOption "Enable Nix";
 
-    extraSubstituters = lib.mkOption {
+    substituters = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [];
       description = "Trusted Substituters";
+    };
+
+    trustedKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "Trusted Substituters Keys";
     };
   };
 
@@ -38,7 +44,8 @@ in {
         experimental-features = "nix-command flakes";
         auto-optimise-store = true;
         flake-registry = "";
-        trusted-substituters = cfg.extraSubstituters;
+        substituters = cfg.extraSubstituters;
+	trusted-public-keys = cfg.trustedKeys;
       };
 
       optimise.automatic = true;
