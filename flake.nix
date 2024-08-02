@@ -59,7 +59,7 @@
         value = lib.nixosSystem {
           modules = [
             # System
-            ./hosts/${host.hostname}.nix
+            ./hosts/${host.hostname}-hardware.nix
             ./profiles/${host.profile}/configuration.nix
           ];
           specialArgs = {
