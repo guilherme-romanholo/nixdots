@@ -30,7 +30,7 @@ in {
         layout = cfg.layout;
         variant = cfg.variant;
       };
-      excludePackages = [ pkgs.xterm ];
+      excludePackages = [pkgs.xterm];
     };
   };
 }

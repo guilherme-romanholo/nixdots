@@ -1,6 +1,7 @@
 {
   outputs,
   host,
+  ...
 }: {
   imports = [
     ../general/configuration.nix
