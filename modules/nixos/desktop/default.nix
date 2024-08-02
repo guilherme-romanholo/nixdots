@@ -8,6 +8,7 @@ in {
   imports = [
     ./sddm.nix
     ./xserver.nix
+    ./hyprland.nix
   ];
 
   options.desktop = {
@@ -18,6 +19,7 @@ in {
     desktop = {
       sddm.enable = lib.mkForce true;
       xserver.enable = lib.mkForce true;
+      hyprland.enable = lib.mkForce false;
     };
   };
 }
