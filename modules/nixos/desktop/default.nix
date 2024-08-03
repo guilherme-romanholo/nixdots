@@ -7,7 +7,9 @@
 in {
   imports = [
     ./sddm.nix
+    ./bspwm.nix
     ./xserver.nix
+    ./hyprland.nix
   ];
 
   options.desktop = {
@@ -17,7 +19,9 @@ in {
   config = lib.mkIf cfg.enable {
     desktop = {
       sddm.enable = lib.mkDefault true;
+      bspwm.enable = lib.mkDefault false;
       xserver.enable = lib.mkDefault true;
+      hyprland.enable = lib.mkDefault false;
     };
   };
 }
