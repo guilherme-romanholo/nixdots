@@ -6,6 +6,7 @@
   imports = [
     ../general/configuration.nix
     outputs.nixosModules.desktop
+    outputs.nixosModules.optional
   ];
 
   desktop = {
@@ -13,5 +14,10 @@
     enable = true;
     # Set the keybord
     xserver.layout = host.kblayout;
+  };
+
+  optional = {
+    # Enable Openssh module
+    openssh.enable = true;
   };
 }

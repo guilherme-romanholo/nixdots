@@ -20,6 +20,12 @@ in {
         }
       ];
     };
+
+    authKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "Public SSH Keys";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -36,7 +42,7 @@ in {
           shell = pkgs.zsh;
           ignoreShellProgramCheck = true;
           # Add your SSH public key(s) here, if you plan on using SSH to connect
-          openssh.authorizedKeys.keys = [];
+          openssh.authorizedKeys.keys = cfg.authKeys;
         };
       })
       cfg.users);
