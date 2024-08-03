@@ -8,7 +8,6 @@ in {
   imports = [
     ./sddm.nix
     ./xserver.nix
-    ./hyprland.nix
   ];
 
   options.desktop = {
