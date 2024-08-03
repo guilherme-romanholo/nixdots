@@ -19,7 +19,6 @@ in {
     desktop = {
       sddm.enable = lib.mkForce true;
       xserver.enable = lib.mkForce true;
-      hyprland.enable = lib.mkForce false;
     };
   };
 }
