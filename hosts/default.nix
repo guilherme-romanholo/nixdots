@@ -41,7 +41,7 @@
           username = "guilherme";
           email = "guilhermeromanholobofo@gmail.com";
           gituser = "guilherme-romanholo";
-          groups = ["wheel" "networkmanager"];
+          groups = ["wheel" "networkmanager" "docker" "libvirt"];
         }
       ];
     }

@@ -27,7 +27,7 @@
     # Enable printer module
     printer = {
       enable = true;
-      drivers = [ pkgs.gutenprint ];
+      drivers = [pkgs.gutenprint];
     };
   };
 }

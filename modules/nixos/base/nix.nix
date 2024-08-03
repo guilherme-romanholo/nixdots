@@ -45,7 +45,7 @@ in {
         auto-optimise-store = true;
         flake-registry = "";
         substituters = cfg.substituters;
-	trusted-public-keys = cfg.trustedKeys;
+        trusted-public-keys = cfg.trustedKeys;
       };
 
       optimise.automatic = true;

@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.optional.openssh;
-in  {
+in {
   options.optional.openssh = {
     enable = lib.mkEnableOption "Enable Openssh";
   };

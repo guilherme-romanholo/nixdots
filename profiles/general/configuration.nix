@@ -19,10 +19,10 @@
     # Config nix
     nix = {
       substituters = [
-	"https://hyprland.cachix.org"
+        "https://hyprland.cachix.org"
       ];
       trustedKeys = [
-	"hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
     # Config timezone
