@@ -17,8 +17,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     desktop = {
-      sddm.enable = lib.mkForce true;
-      xserver.enable = lib.mkForce true;
+      sddm.enable = lib.mkDefault true;
+      xserver.enable = lib.mkDefault true;
     };
   };
 }
