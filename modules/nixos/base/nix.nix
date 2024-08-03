@@ -44,7 +44,7 @@ in {
         experimental-features = "nix-command flakes";
         auto-optimise-store = true;
         flake-registry = "";
-        substituters = cfg.extraSubstituters;
+        substituters = cfg.substituters;
 	trusted-public-keys = cfg.trustedKeys;
       };
 

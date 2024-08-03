@@ -5,7 +5,7 @@
 }: let
   cfg = config.desktop.hyprland;
 in {
-  options.desktop.sddm = {
+  options.desktop.hyprland = {
     enable = lib.mkEnableOption "Enable Hyprland";
   };
 

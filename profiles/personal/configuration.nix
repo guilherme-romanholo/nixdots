@@ -13,5 +13,7 @@
     enable = true;
     # Set the keybord
     xserver.layout = host.kblayout;
+    # Enable Hyprland
+    hyprland.enable = true;
   };
 }
