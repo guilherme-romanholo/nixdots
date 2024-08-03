@@ -72,25 +72,24 @@
       hosts.hosts);
 
     # NixOS Home Configurations
-    # homeConfigurations = lib.attrsets.mergeAttrsList (map (host:
-    #   builtins.listToAttrs (map (user: {
-    #       name = user.username + "@" + host.hostname;
-    #       value = lib.homeManagerConfiguration {
-    #         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    #         extraSpecialArgs = {
-    #           inherit inputs;
-    #           inherit outputs;
-    #           inherit user;
-    #         };
-    #         modules = [
-    #           # Home
-    #           ./profiles/${host.profile}/home.nix
-    #           # Themes
-    #           ./themes/home
-    #         ];
-    #       };
-    #     })
-    #     host.users))
-    # hosts);
+    homeConfigurations = lib.attrsets.mergeAttrsList (map (host:
+      builtins.listToAttrs (map (user: {
+          name = user.username + "@" + host.hostname;
+          value = lib.homeManagerConfiguration {
+            pkgs = forAllSystems (system: nixpkgs.legacyPackages.${system});
+            extraSpecialArgs = {
+              inherit host;
+              inherit user;
+              inherit inputs;
+              inherit outputs;
+            };
+            modules = [
+              # Home
+              ./profiles/${host.profile}/home.nix
+            ];
+          };
+        })
+        host.users))
+    hosts.hosts);
   };
 }
