@@ -58,9 +58,9 @@
         name = host.hostname;
         value = lib.nixosSystem {
           modules = [
-            # System
             ./hosts/${host.hostname}-hardware.nix
             ./profiles/${host.profile}/configuration.nix
+	    ./scripts
           ];
           specialArgs = {
             inherit host;
@@ -84,7 +84,6 @@
               inherit outputs;
             };
             modules = [
-              # Home
               ./profiles/${host.profile}/home.nix
             ];
           };
