@@ -16,10 +16,12 @@ in {
       keybindings = {
 	# Applications
 	"super + Return" = "${pkgs.kitty}/bin/kitty";
+	"super + a" = "${pkgs.rofi}/bin/rofi -show drun";
 	# Bspwm Hotkeys
 	"super + ctrl + {q,r}" = "${pkgs.bspwm}/bin/bspc {quit,wm -r}";
 	"super + {_,shift + }q" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
-	"super + {_,shift + }{1-9,0}" = "${pkgs.bspwm}/bin/bspc {desktop -f, node -d} '^{1-9,10}' --follow";
+	"super + {1-9,0}" = "${pkgs.bspwm}/bin/bspc desktop --focus ^{1-9,10}";
+	"super + shift + {1-9,0}" = "${pkgs.bspwm}/bin/bspc node --to-desktop ^{1-9,10} --focus";
 	# State
 	"super + m" = "${pkgs.bspwm}/bin/bspc desktop -l next";
 	"super + {t,shift + t,s,f}" = "${pkgs.bspwm}/bin/bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";

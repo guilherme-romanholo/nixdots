@@ -7,6 +7,7 @@
 in {
   imports = [
     ./kitty.nix
+    ./firefox.nix
   ];
 
   options.desktop.apps = {
@@ -16,6 +17,7 @@ in {
   config = lib.mkIf cfg.enable {
     desktop.apps = {
       kitty.enable = lib.mkDefault true;
+      firefox.enable = lib.mkDefault true;
     };
   };
 }

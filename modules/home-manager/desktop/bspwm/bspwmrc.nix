@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.desktop.bspwm.bspwmrc;
@@ -15,6 +16,9 @@ in {
       settings = {
 	border_width = 2;
       };
+      startupPrograms = [
+	"polybar"
+      ];
     };
   };
 }
