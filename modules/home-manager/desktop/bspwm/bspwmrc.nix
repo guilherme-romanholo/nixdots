@@ -19,6 +19,15 @@ in {
       startupPrograms = [
 	"polybar"
       ];
+      extraConfig = ''
+	default_workspaces() {
+	    for monitor in `xrandr -q | grep -w 'connected' | cut -d' ' -f1`; do
+		bspc monitor "$monitor" -d '' '' '' '' '' '' '' ''
+	    done
+        }
+
+	default_workspaces
+      '';
     };
   };
 }
