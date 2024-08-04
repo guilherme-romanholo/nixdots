@@ -14,8 +14,8 @@ in {
       enable = true;
       shellIntegration.enableZshIntegration = true;
       settings = {
-	enable_audio_bell = false;
-	allow_hyperlinks = true;
+        enable_audio_bell = false;
+        allow_hyperlinks = true;
       };
     };
   };

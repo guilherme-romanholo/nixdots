@@ -14,26 +14,26 @@ in {
       enable = true;
       script = "polybar -q top &";
       settings = {
-	"bar/top" = {
-	  width = "100%";
-	  height = "5%";
-	  radius = 0;
-	  modules-left = "bspwm";
-	  modules-center = "date";
-	};
-	"module/date" = {
-	  type = "internal/date";
-	  internal = 5;
-	  date = "%d.%m.%y";
-	  time = "%H:%M";
-	  label = "%time% %date%";
-	};
-	"module/bspwm" = {
-	  type = "internal/bspwm";
-	  pin-workspaces = true;
-	  ws-icon-default = "o";
-	  label-focused-foreground = "#aaaaaa";
-	};
+        "bar/top" = {
+          width = "100%";
+          height = "5%";
+          radius = 0;
+          modules-left = "bspwm";
+          modules-center = "date";
+        };
+        "module/date" = {
+          type = "internal/date";
+          internal = 5;
+          date = "%d.%m.%y";
+          time = "%H:%M";
+          label = "%time% %date%";
+        };
+        "module/bspwm" = {
+          type = "internal/bspwm";
+          pin-workspaces = true;
+          ws-icon-default = "o";
+          label-focused-foreground = "#aaaaaa";
+        };
       };
     };
   };

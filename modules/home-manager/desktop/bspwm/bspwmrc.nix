@@ -11,23 +11,26 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    xsession.windowManager.bspwm = {
+    xsession = {
       enable = true;
-      settings = {
-	border_width = 2;
-      };
-      startupPrograms = [
-	"polybar"
-      ];
-      extraConfig = ''
-	default_workspaces() {
-	    for monitor in `xrandr -q | grep -w 'connected' | cut -d' ' -f1`; do
-		bspc monitor "$monitor" -d '' '' '' '' '' '' '' ''
-	    done
-        }
+      windowManager.bspwm = {
+        enable = true;
+        settings = {
+          border_width = 2;
+        };
+        startupPrograms = [
+          "polybar"
+        ];
+        extraConfig = ''
+          default_workspaces() {
+              for monitor in `xrandr -q | grep -w 'connected' | cut -d' ' -f1`; do
+          	bspc monitor "$monitor" -d '' '' '' '' '' '' '' ''
+              done
+                 }
 
-	default_workspaces
-      '';
+          default_workspaces
+        '';
+      };
     };
   };
 }

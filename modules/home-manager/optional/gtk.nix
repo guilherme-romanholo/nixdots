@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.optional.gtk;
-in  {
+in {
   options.optional.gtk = {
     enable = lib.mkEnableOption "Enable Gtk";
 
@@ -22,8 +22,8 @@ in  {
   config = lib.mkIf cfg.enable {
     gtk = {
       iconTheme = {
-	package = cfg.iconPkg;
-	name = cfg.iconName;
+        package = cfg.iconPkg;
+        name = cfg.iconName;
       };
     };
   };

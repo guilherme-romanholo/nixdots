@@ -12,6 +12,7 @@ in {
     enable = lib.mkEnableOption "Enable Desktop Hyprland";
   };
 
-  config = lib.mkIf cfg.enable {
-  };
+  config =
+    lib.mkIf cfg.enable {
+    };
 }

@@ -6,7 +6,7 @@
   ...
 }: let
   cfg = config.optional.stylix;
-in  {
+in {
   imports = [
     inputs.stylix.homeManagerModules.stylix
   ];
@@ -59,22 +59,22 @@ in  {
       base16Scheme = cfg.colorscheme;
 
       cursor = {
-	package = cfg.cursorPkg;
-	name = cfg.cursorName;
+        package = cfg.cursorPkg;
+        name = cfg.cursorName;
       };
 
       fonts = {
-	monospace = {
-	  package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-	  name = "JetBrainsMono Nerd Font Mono";
-	};
+        monospace = {
+          package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+          name = "JetBrainsMono Nerd Font Mono";
+        };
 
-	sizes = {
-	  desktop = 12;
-	  popups = 10;
-	  terminal = 11;
-	  applications = 10;
-	};
+        sizes = {
+          desktop = 12;
+          popups = 10;
+          terminal = 11;
+          applications = 10;
+        };
       };
     };
   };

@@ -6,6 +6,7 @@
   cfg = config.desktop.bspwm;
 in {
   imports = [
+    ./feh.nix
     ./rofi.nix
     ./sxhkd.nix
     ./bspwmrc.nix
@@ -18,6 +19,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     desktop.bspwm = {
+      feh.enable = lib.mkDefault true;
       rofi.enable = lib.mkDefault true;
       sxhkd.enable = lib.mkDefault true;
       bspwmrc.enable = lib.mkDefault true;
