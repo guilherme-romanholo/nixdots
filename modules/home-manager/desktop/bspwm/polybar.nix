@@ -18,6 +18,7 @@ in {
 	  width = "100%";
 	  height = "5%";
 	  radius = 0;
+	  modules-left = "bspwm";
 	  modules-center = "date";
 	};
 	"module/date" = {
