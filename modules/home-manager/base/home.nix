@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.base.home;
-in  {
+in {
   options.base.home = {
     enable = lib.mkEnableOption "Enable Home Configs";
 

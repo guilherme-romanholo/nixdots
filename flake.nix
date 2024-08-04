@@ -67,7 +67,7 @@
           modules = [
             ./hosts/${host.hostname}/hardware-configuration.nix
             ./profiles/${host.profile}/configuration.nix
-	    ./scripts
+            ./scripts
           ];
           specialArgs = {
             inherit host;

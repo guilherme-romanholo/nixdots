@@ -6,5 +6,5 @@ let
   ];
   importHosts = host: import host;
   hosts = builtins.map importHosts files;
-in 
+in
   hosts
