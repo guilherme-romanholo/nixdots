@@ -1,6 +1,8 @@
 {
+  inputs,
   outputs,
   host,
+  pkgs,
   ...
 }: {
   imports = [
@@ -37,6 +39,10 @@
       device = host.grubDevice;
     };
   };
+
+  environment.systemPackages = [
+    inputs.nixvim.packages.${pkgs.system}.default
+  ];
 
   system.stateVersion = host.systemVersion;
 }

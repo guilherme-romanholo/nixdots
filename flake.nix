@@ -11,6 +11,8 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Nixvim
+    nixvim.url = "github:guilherme-romanholo/nixvim";
   };
 
   outputs = {
