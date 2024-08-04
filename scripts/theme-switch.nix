@@ -15,7 +15,6 @@ pkgs.writeShellScriptBin "theme-switch" ''
   mv default.nix default.nix.temp
   ln -s $1/default.nix default.nix
 
-  sudo nixos-rebuild switch --flake ~/.dotfiles
   ${pkgs.home-manager}/bin/home-manager switch --flake ~/.dotfiles
 
   rm default.nix
