@@ -14,7 +14,17 @@ in {
     services.sxhkd = {
       enable = true;
       keybindings = {
-	"super + return" = "${pkgs.kitty}/bin/kitty";
+	### Applications ###
+
+	# Terminal 
+	"super + Return" = "${pkgs.kitty}/bin/kitty";
+
+	### Bspwm Hotkeys ###
+
+	# Quit and restart bspwm
+	"super + ctrl + {q,r}" = "${pkgs.bspwm}/bin/bspc {quit,wm -r}";
+	# Close and kill
+	"super + {_,shift + }q" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
       };
     };
   };
