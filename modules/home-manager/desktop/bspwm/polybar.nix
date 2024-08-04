@@ -31,6 +31,8 @@ in {
 	"module/bspwm" = {
 	  type = "internal/bspwm";
 	  pin-workspaces = true;
+	  ws-icon-default = "o";
+	  label-focused-foreground = "#aaaaaa";
 	};
       };
     };
