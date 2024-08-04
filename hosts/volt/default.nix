@@ -1,11 +1,12 @@
 {
   # Host
-  hostname = "testvm";
+  system = "x86_64-linux";
   profile = "personal";
-  bootmode = "grub";
-  grubDevice = "/dev/vda";
-  systemVersion = "24.05";
+  bootmode = "uefi";
+  hostname = "volt";
+  grubDevice = "null";
   videoDriver = "amdgpu";
+  stateVersion = "24.05";
   # Locale
   locale = "pt_BR.UTF-8";
   timezone = "America/Sao_Paulo";

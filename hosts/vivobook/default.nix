@@ -1,11 +1,12 @@
 {
   # Host
-  hostname = "volt";
-  profile = "personal";
-  bootmode = "uefi";
+  system = "x86_64-linux";
+  profile = "wsl";
+  bootmode = "null";
+  hostname = "vivobook";
   grubDevice = "null";
-  systemVersion = "24.05";
-  videoDriver = "amdgpu";
+  videoDriver = "null";
+  stateVersion = "24.05";
   # Locale
   locale = "pt_BR.UTF-8";
   timezone = "America/Sao_Paulo";
@@ -16,7 +17,7 @@
       username = "guilherme";
       email = "guilhermeromanholobofo@gmail.com";
       gituser = "guilherme-romanholo";
-      groups = ["wheel" "networkmanager" "docker" "libvirt"];
+      groups = ["wheel" "networkmanager"];
     }
   ];
 }

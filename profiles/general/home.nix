@@ -20,6 +20,6 @@
     home.username = user.username;
   };
 
-  home.stateVersion = host.systemVersion;
+  home.stateVersion = host.stateVersion;
   systemd.user.startServices = "sd-switch";
 }

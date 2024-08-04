@@ -44,5 +44,5 @@
     inputs.nixvim.packages.${pkgs.system}.default
   ];
 
-  system.stateVersion = host.systemVersion;
+  system.stateVersion = host.stateVersion;
 }

@@ -1,8 +1,8 @@
 let
   files = [
-    ./volt.nix
-    ./testvm.nix
-    ./vivobook.nix
+    ./volt
+    ./testvm
+    ./vivobook
   ];
   importHosts = host: import host;
   hosts = builtins.map importHosts files;

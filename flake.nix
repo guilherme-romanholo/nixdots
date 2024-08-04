@@ -77,15 +77,14 @@
           };
         };
       })
-      hosts.hosts);
+      hosts);
 
     # NixOS Home Configurations
     homeConfigurations = lib.attrsets.mergeAttrsList (map (host:
       builtins.listToAttrs (map (user: {
           name = user.username + "@" + host.hostname;
           value = lib.homeManagerConfiguration {
-            # TODO: Generalize packages
-            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            pkgs = nixpkgs.legacyPackages.${host.system};
             extraSpecialArgs = {
               inherit host;
               inherit user;
@@ -98,6 +97,6 @@
           };
         })
         host.users))
-    hosts.hosts);
+    hosts);
   };
 }

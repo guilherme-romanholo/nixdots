@@ -1,11 +1,12 @@
 {
   # Host
-  hostname = "vivobook";
-  profile = "wsl";
-  bootmode = "null";
-  grubDevice = "null";
-  systemVersion = "24.05";
-  videoDriver = "null";
+  system = "x86_64-linux";
+  profile = "personal";
+  bootmode = "grub";
+  hostname = "testvm";
+  grubDevice = "/dev/vda";
+  videoDriver = "amdgpu";
+  stateVersion = "24.05";
   # Locale
   locale = "pt_BR.UTF-8";
   timezone = "America/Sao_Paulo";
