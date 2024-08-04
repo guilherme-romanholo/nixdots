@@ -64,9 +64,8 @@
       (host: {
         name = host.hostname;
         value = lib.nixosSystem {
-	  # TODO: Transform imports into module notation
           modules = [
-            ./hosts/${host.hostname}-hardware.nix
+            ./hosts/${host.hostname}/hardware-configuration.nix
             ./profiles/${host.profile}/configuration.nix
 	    ./scripts
           ];
