@@ -13,6 +13,8 @@
     };
     # Nixvim
     nixvim.url = "github:guilherme-romanholo/nixvim";
+    # Stylix
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
