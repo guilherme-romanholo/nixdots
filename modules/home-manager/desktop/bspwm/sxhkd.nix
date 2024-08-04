@@ -19,7 +19,9 @@ in {
 	# Bspwm Hotkeys
 	"super + ctrl + {q,r}" = "${pkgs.bspwm}/bin/bspc {quit,wm -r}";
 	"super + {_,shift + }q" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
+	"super + {_,shift + }{1-9,0}" = "${pkgs.bspwm}/bin/bspc {desktop -f, node -d} '^{1-9,10}' --follow";
 	# State
+	"super + m" = "${pkgs.bspwm}/bin/bspc desktop -l next";
 	"super + {t,shift + t,s,f}" = "${pkgs.bspwm}/bin/bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
 	# Focus
 	"super + shift + {h,j,k,l}" = "${pkgs.bspwm}/bin/bspc node -f {west,south,north,east}";
