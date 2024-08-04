@@ -17,8 +17,8 @@
 
   # Disable unused base modules in wsl
   base = {
-    sound = lib.mkForce false;
-    video = lib.mkForce false;
-    bootloader = lib.mkForce false;
+    sound.enable = lib.mkForce false;
+    video.enable = lib.mkForce false;
+    bootloader.enable = lib.mkForce false;
   };
 }

@@ -42,7 +42,7 @@
     };
 
   fileSystems."/mnt/wslg/distro" =
-    { device = "";
+    { device = "none";
       fsType = "none";
       options = [ "bind" ];
     };
@@ -52,11 +52,11 @@
       fsType = "overlay";
     };
 
-  fileSystems."/tmp/.X11-unix" =
-    { device = "/mnt/wslg/.X11-unix";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+#  fileSystems."/tmp/.X11-unix" =
+#    { device = "/mnt/wslg/.X11-unix";
+#      fsType = "none";
+#      options = [ "bind" ];
+#    };
 
   fileSystems."/mnt/wslg/doc" =
     { device = "none";
@@ -80,17 +80,17 @@
       options = [ "bind" ];
     };
 
-  fileSystems."/tmp/.X11-unix/X0" =
-    { device = "/mnt/wslg/.X11-unix/X0";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+#  fileSystems."/tmp/.X11-unix/X0" =
+#    { device = "/mnt/wslg/.X11-unix/X0";
+#      fsType = "none";
+#      options = [ "bind" ];
+#    };
 
-  fileSystems."/mnt/wslg/.X11-unix/X0" =
-    { device = "/mnt/wslg/.X11-unix/X0";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+#  fileSystems."/mnt/wslg/.X11-unix/X0" =
+#    { device = "/mnt/wslg/.X11-unix/X0";
+#      fsType = "none";
+#      options = [ "bind" ];
+#    };
 
   fileSystems."/mnt/wslg/.X11-unix/X0" =
     { device = "/mnt/wslg/.X11-unix/X0";
