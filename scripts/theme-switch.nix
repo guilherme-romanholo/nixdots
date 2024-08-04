@@ -1,6 +1,6 @@
 {pkgs}:
 pkgs.writeShellScriptBin "theme-switch" ''
-  color_path=~/.dotfiles/themes/colorscheme
+  color_path=~/.dotfiles/themes
   RED='\033[0;31m'
 
   if [ "$1" = "help" ]; then
@@ -21,5 +21,5 @@ pkgs.writeShellScriptBin "theme-switch" ''
   rm default.nix
   mv default.nix.temp default.nix
 
-  echo -e "$RED Restart system to apply the changes correctly."
+  echo -e "$RED Restart session to apply the changes correctly."
 ''
