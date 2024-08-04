@@ -6,6 +6,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     # Nixpkgs Unstable
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # WSL
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
