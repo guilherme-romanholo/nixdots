@@ -9,7 +9,7 @@ in {
     ./feh.nix
     ./rofi.nix
     ./sxhkd.nix
-    ./bspwmrc.nix
+    ./bspconf.nix
     ./polybar.nix
   ];
 
@@ -22,7 +22,7 @@ in {
       feh.enable = lib.mkDefault true;
       rofi.enable = lib.mkDefault true;
       sxhkd.enable = lib.mkDefault true;
-      bspwmrc.enable = lib.mkDefault true;
+      bspconf.enable = lib.mkDefault true;
       polybar.enable = lib.mkDefault true;
     };
   };

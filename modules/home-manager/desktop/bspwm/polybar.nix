@@ -13,14 +13,16 @@ in {
     services.polybar = {
       enable = true;
       script = "polybar -q top &";
+
       settings = {
         "bar/top" = {
           width = "100%";
-          height = "5%";
+          height = "3%";
           radius = 0;
           modules-left = "bspwm";
           modules-center = "date";
         };
+
         "module/date" = {
           type = "internal/date";
           internal = 5;
@@ -28,6 +30,7 @@ in {
           time = "%H:%M";
           label = "%time% %date%";
         };
+
         "module/bspwm" = {
           type = "internal/bspwm";
           pin-workspaces = true;
