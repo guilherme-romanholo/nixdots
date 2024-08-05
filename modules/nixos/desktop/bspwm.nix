@@ -10,6 +10,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    programs.dconf.enable = true;
     services.xserver.windowManager.bspwm.enable = true;
   };
 }

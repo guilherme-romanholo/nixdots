@@ -14,6 +14,8 @@
     enable = true;
     # Set the keybord
     xserver.layout = host.kblayout;
+    # Enable bspwm
+    bspwm.enable = true;
   };
 
   optional = {

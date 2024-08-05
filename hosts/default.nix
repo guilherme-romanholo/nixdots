@@ -1,5 +1,6 @@
 let
   files = [
+    ./taz
     ./volt
     ./testvm
     ./vivobook
