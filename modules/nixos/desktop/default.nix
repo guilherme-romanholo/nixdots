@@ -7,6 +7,7 @@
 in {
   imports = [
     ./sddm.nix
+    ./sway.nix
     ./xserver.nix
   ];
 
@@ -17,6 +18,7 @@ in {
   config = lib.mkIf cfg.enable {
     desktop = {
       sddm.enable = lib.mkDefault true;
+      sway.enable = lib.mkDefault false;
       xserver.enable = lib.mkDefault true;
     };
   };
