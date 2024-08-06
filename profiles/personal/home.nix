@@ -1,6 +1,7 @@
 {
   outputs,
   pkgs,
+  host,
   ...
 }: let
   theme = import ./../../themes {inherit pkgs;};
@@ -16,6 +17,11 @@ in {
     enable = true;
     # Enable desktop home apps
     apps.enable = true;
+    # Enable Sway Home
+    sway = {
+      enable = true;
+      config.kblayout = host.kblayout;
+    };
   };
 
   optional = {

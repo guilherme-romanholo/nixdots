@@ -7,6 +7,7 @@
 in {
   imports = [
     ./apps
+    ./sway
   ];
 
   options.desktop = {
@@ -16,6 +17,7 @@ in {
   config = lib.mkIf cfg.enable {
     desktop = {
       apps.enable = lib.mkDefault false;
+      sway.enable = lib.mkDefault false;
     };
   };
 }
