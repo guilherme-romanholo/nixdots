@@ -28,6 +28,9 @@ in {
 	    "custom/logo" 
 	    "cpu" 
 	    "memory" 
+	  ];
+	  
+	  modules-center = [
 	    "sway/workspaces" 
 	  ];
 
@@ -66,7 +69,7 @@ in {
 	  };
 
 	  "network" = {
-	    format = "{icon}  {bandwidthTotalBits}";
+	    format = " {icon}  {bandwidthTotalBits}";
 	    format-icons = "󰈀";
 	  };
 
