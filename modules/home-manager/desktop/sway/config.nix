@@ -17,15 +17,25 @@ in {
       description = "Keybord Layout";
       default = "br";
     };
+
+    modKey = lib.mkOption {
+      type = lib.types.str;
+      description = "Modifier Key";
+      default = "Mod4";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
 
+      xwayland = true;
+
       config = {
-	modifier = "Mod4";
+	modifier = cfg.modKey;
 	terminal = "kitty";
+	menu = "${pkgs.wofi}/bin/wofi --show drun";
+
 	bars = [
 	  {command = "${pkgs.waybar}/bin/waybar";}
 	];
