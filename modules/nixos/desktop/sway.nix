@@ -24,9 +24,8 @@ in {
     services.gnome.gnome-keyring.enable = true;
     security.polkit.enable = true;
 
-    # Dconf
+    # Dbus
     services.dbus.enable = true;
-    services.dconf.enable = true;
 
     # Portals
     xdg.portal = {
