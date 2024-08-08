@@ -5,8 +5,8 @@
   wallpaper = ./gruv_snowcity.jpg;
 
   cursorPkg = pkgs.capitaine-cursors-themed;
-  cursorName = "Capitaine Cursors (Gruvbox)";
+  cursorName = ''"Capitaine Cursors (Gruvbox)"'';
 
-  # iconPkg = pkgs.gruvbox-icons-plus;
-  # iconName = "Gruvbox-Plus-Dark";
+  iconPkg = pkgs.gruvbox-icons-plus;
+  iconName = "Gruvbox-Plus-Dark";
 }

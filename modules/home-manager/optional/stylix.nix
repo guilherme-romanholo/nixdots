@@ -65,8 +65,8 @@ in {
 
       fonts = {
         monospace = {
-          package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-          name = "JetBrainsMono Nerd Font Mono";
+          package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+          name = "FiraCode Nerd Font Mono";
         };
 
         sizes = {
@@ -75,6 +75,11 @@ in {
           terminal = 11;
           applications = 10;
         };
+      };
+
+      opacity = {
+	terminal = 0.85;
+	applications = 0.9;
       };
     };
   };

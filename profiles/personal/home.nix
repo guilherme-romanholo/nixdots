@@ -1,6 +1,7 @@
 {
   outputs,
   pkgs,
+  host,
   ...
 }: let
   theme = import ./../../themes {inherit pkgs;};
@@ -14,10 +15,13 @@ in {
   desktop = {
     # Enable home desktop configurations
     enable = true;
-    # Enable bspwm home config
-    bspwm.enable = true;
     # Enable desktop home apps
     apps.enable = true;
+    # Enable Sway Home
+    sway = {
+      enable = true;
+      config.kblayout = host.kblayout;
+    };
   };
 
   optional = {
@@ -30,6 +34,13 @@ in {
 
       cursorPkg = theme.cursorPkg;
       cursorName = theme.cursorName;
+    };
+
+    gtk = {
+      enable = true;
+
+      iconPkg = theme.iconPkg;
+      iconName = theme.iconName;
     };
   };
 }

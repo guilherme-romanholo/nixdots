@@ -7,8 +7,7 @@
 in {
   imports = [
     ./apps
-    ./bspwm
-    ./hyprland
+    ./sway
   ];
 
   options.desktop = {
@@ -18,8 +17,7 @@ in {
   config = lib.mkIf cfg.enable {
     desktop = {
       apps.enable = lib.mkDefault false;
-      bspwm.enable = lib.mkDefault false;
-      hyprland.enable = lib.mkDefault false;
+      sway.enable = lib.mkDefault false;
     };
   };
 }

@@ -7,9 +7,8 @@
 in {
   imports = [
     ./sddm.nix
-    ./bspwm.nix
+    ./sway.nix
     ./xserver.nix
-    ./hyprland.nix
   ];
 
   options.desktop = {
@@ -19,9 +18,8 @@ in {
   config = lib.mkIf cfg.enable {
     desktop = {
       sddm.enable = lib.mkDefault true;
-      bspwm.enable = lib.mkDefault false;
+      sway.enable = lib.mkDefault false;
       xserver.enable = lib.mkDefault true;
-      hyprland.enable = lib.mkDefault false;
     };
   };
 }

@@ -16,3 +16,9 @@
 - `rebuild boot system`: Rebuild nixos after boot
 
 ### How to change theme
+
+
+### Todo:
+
+- Add stylix in system to test cursor theme
+- Make a theme configuration to include in profiles

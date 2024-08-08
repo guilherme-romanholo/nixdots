@@ -15,10 +15,8 @@
     enable = true;
     # Set the keybord
     xserver.layout = host.kblayout;
-    # Enable bspwm
-    bspwm.enable = true;
-    # Enable hyprland
-    hyprland.enable = true;
+    # Enable Sway
+    sway.enable = true;
   };
 
   optional = {
