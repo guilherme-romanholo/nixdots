@@ -76,6 +76,11 @@ in {
           applications = 10;
         };
       };
+
+      opacity = {
+	terminal = 0.9;
+	applications = 0.9;
+      };
     };
   };
 }

@@ -28,23 +28,42 @@ in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
-
+      package = pkgs.swayfx;
       xwayland = true;
+
+      checkConfig = false;
 
       config = {
 	modifier = cfg.modKey;
+
 	terminal = "kitty";
+
 	menu = "${pkgs.wofi}/bin/wofi --show drun";
 
 	bars = [
 	  {command = "${pkgs.waybar}/bin/waybar";}
 	];
+
+	gaps = {
+	  inner = 6;
+	  outer = 4;
+	};
+
+	input = {
+	  "*" = {
+	    xkb_layout = "${cfg.kblayout}";
+	  };
+	};
       };
 
       extraConfig = ''
-	input * {
-	  xkb_layout "${cfg.kblayout}"
-	}
+	corner_radius 10
+
+	blur enable
+	blur_passes 3
+	blur_radius 2
+
+	workspace 1
       '';
     };
   };
