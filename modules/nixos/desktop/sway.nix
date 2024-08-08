@@ -17,7 +17,7 @@ in {
       package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
-	swayidle
+        swayidle
       ];
     };
 
@@ -35,7 +35,7 @@ in {
     xdg.portal = {
       enable = true;
       # wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
 
     # Variables

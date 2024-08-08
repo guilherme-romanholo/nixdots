@@ -78,8 +78,8 @@ in {
       };
 
       opacity = {
-	terminal = 0.85;
-	applications = 0.9;
+        terminal = 0.85;
+        applications = 0.9;
       };
     };
   };

@@ -17,72 +17,72 @@ in {
       enable = true;
 
       settings = {
-	# Main Bar
-	mainBar = {
-	  # Bar options
-	  layer = "top";
-	  position = "top";
-	  heigth = 25;
+        # Main Bar
+        mainBar = {
+          # Bar options
+          layer = "top";
+          position = "top";
+          heigth = 25;
 
-	  modules-left = [ 
-	    "custom/logo" 
-	    "cpu" 
-	    "memory" 
-	  ];
-	  
-	  modules-center = [
-	    "sway/workspaces" 
-	  ];
+          modules-left = [
+            "custom/logo"
+            "cpu"
+            "memory"
+          ];
 
-	  modules-right = [
-	    "tray"
-	    "network"
-	    "clock"
-	    "custom/power" 
-	  ];
+          modules-center = [
+            "sway/workspaces"
+          ];
 
-	  # Modules 
-	  "sway/workspaces" = {
-	    disable-scroll = true;
-	    all-outputs = true;
-	  };
+          modules-right = [
+            "tray"
+            "network"
+            "clock"
+            "custom/power"
+          ];
 
-	  "custom/logo" = {
-	    format = " {icon}  ";
-	    format-icons = "";
-	  };
+          # Modules
+          "sway/workspaces" = {
+            disable-scroll = true;
+            all-outputs = true;
+          };
 
-	  "cpu" = {
-	    interval = 5;
-	    format = "{icon}  {usage}%";
-	    format-icons = "";
-	  };
+          "custom/logo" = {
+            format = " {icon}  ";
+            format-icons = "";
+          };
 
-	  "memory" = {
-	    interval = 5;
-	    format = "{icon}  {used:0.1f}G";
-	    format-icons = "";
-	  };
+          "cpu" = {
+            interval = 5;
+            format = "{icon}  {usage}%";
+            format-icons = "";
+          };
 
-	  "tray" = {
-	    spacing = 5;
-	  };
+          "memory" = {
+            interval = 5;
+            format = "{icon}  {used:0.1f}G";
+            format-icons = "";
+          };
 
-	  "network" = {
-	    format = " {icon}  {bandwidthTotalBits}";
-	    format-icons = "󰈀";
-	  };
+          "tray" = {
+            spacing = 5;
+          };
 
-	  "clock" = {
-	    interval = 60;
-	    format = "{:%H:%M}";
-	  };
+          "network" = {
+            format = " {icon}  {bandwidthTotalBits}";
+            format-icons = "󰈀";
+          };
 
-	  "custom/power" = {
-	    format = " {icon}  ";
-	    format-icons = "⏻";
-	  };
-	};
+          "clock" = {
+            interval = 60;
+            format = "{:%H:%M}";
+          };
+
+          "custom/power" = {
+            format = " {icon}  ";
+            format-icons = "⏻";
+          };
+        };
       };
     };
   };
