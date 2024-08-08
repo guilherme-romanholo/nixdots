@@ -16,6 +16,9 @@ in {
       enable = true;
       package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
+      extraPackages = with pkgs; [
+	swayidle
+      ];
     };
 
     # Xwayland

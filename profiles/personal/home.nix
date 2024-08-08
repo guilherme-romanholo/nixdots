@@ -35,5 +35,12 @@ in {
       cursorPkg = theme.cursorPkg;
       cursorName = theme.cursorName;
     };
+
+    gtk = {
+      enable = true;
+
+      iconPkg = theme.iconPkg;
+      iconName = theme.iconName;
+    };
   };
 }

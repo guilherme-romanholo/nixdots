@@ -38,7 +38,7 @@ in {
 
 	terminal = "kitty";
 
-	menu = "${pkgs.wofi}/bin/wofi --show drun";
+	menu = "${pkgs.wofi}/bin/wofi --show drun --allow-images";
 
 	bars = [
 	  {command = "${pkgs.waybar}/bin/waybar";}
@@ -60,7 +60,7 @@ in {
 	corner_radius 10
 
 	blur enable
-	blur_passes 3
+	blur_passes 4
 	blur_radius 2
 
 	workspace 1
