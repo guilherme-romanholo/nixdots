@@ -21,3 +21,4 @@
 ### Todo:
 
 - Add stylix in system to test cursor theme
+- Make a theme configuration to include in profiles
