@@ -41,7 +41,7 @@ in {
         menu = "${pkgs.wofi}/bin/wofi --show drun --allow-images";
 
         bars = [
-          {command = "${pkgs.waybar}/bin/waybar &";}
+          {command = "${pkgs.waybar}/bin/waybar";}
         ];
 
         gaps = {
