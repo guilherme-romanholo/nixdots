@@ -58,6 +58,9 @@
     # Reusable nixos modules you might want to export
     nixosModules = import ./modules/nixos;
 
+    # Reusable home-manager modules you might want to export
+    homeManagerModules = import ./modules/home-manager;
+
     # NixOS System Configurations
     nixosConfigurations = builtins.listToAttrs (map
       (host: {
