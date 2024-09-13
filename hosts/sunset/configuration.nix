@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }: let
   vars = import ./default.nix;
@@ -22,8 +23,12 @@ in  {
   ############
 
   optional = {
+    printer = {
+      enable = true;
+      drivers = [ pkgs.gutenprint ];
+    };
+
     docker.enable = true;
-    printer.enable = true;
     libvirt.enable = true;
   };
 
