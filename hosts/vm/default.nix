@@ -14,7 +14,7 @@
       gituser = "guilherme-romanholo";
       email = "guilhermeromanholobofo@gmail.com";
       # Suites
-      suites = ["base" "terminal"];
+      suites = [];
     }
   ];
 }

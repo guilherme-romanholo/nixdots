@@ -19,5 +19,7 @@ in {
       username = cfg.username;
       homeDirectory = "/home/${cfg.username}";
     };
+
+    programs.home-manager.enable = true;
   };
 }
