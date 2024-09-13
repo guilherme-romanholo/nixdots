@@ -24,8 +24,6 @@
           root = {
             name = "ROOT";
             size = "200G";
-            part-type = "primary";
-            bootable = true;
             content = {
               type = "filesystem";
               format = "ext4";
