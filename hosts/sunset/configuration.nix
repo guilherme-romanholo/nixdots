@@ -22,7 +22,9 @@ in  {
   ############
 
   optional = {
-    openssh.enable = true;
+    docker.enable = true;
+    printer.enable = true;
+    libvirt.enable = true;
   };
 
   ###########
@@ -59,6 +61,8 @@ in  {
     # Config nix
     nix = {
       enable = true;
+      substituters = ["https://devenv.cachix.org"];
+      trustedKeys = ["devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="];
     };
     # Config network
     network = {
