@@ -8,7 +8,7 @@
     outputs.homeManagerModules.core
   ];
 
-  base = {
+  core = {
     home = {
       enable = true;
       username = user.username;
