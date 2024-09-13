@@ -12,6 +12,11 @@ in {
       type = lib.types.str;
       description = "Username";
     };
+
+    stateVersion = lib.mkOption {
+      type = lib.types.str;
+      description = "Username";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -21,5 +26,6 @@ in {
     };
 
     programs.home-manager.enable = true;
+    home.stateVersion = cfg.stateVersion;
   };
 }
