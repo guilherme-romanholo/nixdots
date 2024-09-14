@@ -1,5 +1,6 @@
 {
   imports = [
+    ./wsl.nix
     ./zfs.nix
     ./docker.nix
     ./libvirt.nix
