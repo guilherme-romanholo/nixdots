@@ -18,6 +18,10 @@ in  {
     inputs.disko.nixosModules.disko
   ];  
 
+  environment.systemPackages = with pkgs; [
+    neovim
+  ];
+
   ############
   # Optional #
   ############
@@ -75,7 +79,10 @@ in  {
       hostname = vars.hostname;
     };
     # Bootloader
-    bootloader.enable = true;
+    bootloader = {
+      enable = true;
+      OSProber = true;
+    };
     # Config sound
     sound.enable = true;
     # Config Users
