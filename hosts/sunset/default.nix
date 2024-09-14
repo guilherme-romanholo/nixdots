@@ -14,7 +14,9 @@
       gituser = "guilherme-romanholo";
       email = "guilhermeromanholobofo@gmail.com";
       # Suites
-      suites = ["terminal"];
+      suites = ["terminal" "desktop"];
+      # Only if desktop suite is enabled
+      desktops = ["sway"];
     }
   ];
 }
