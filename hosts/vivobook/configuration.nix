@@ -27,7 +27,7 @@ in  {
   optional = {
     wsl = {
       enable = true;
-      defaultUser = builtins.head vars.users;
+      defaultUser = (builtins.head vars.users).username;
     };
   };
 

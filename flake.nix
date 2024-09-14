@@ -13,6 +13,8 @@
     };
     # Nixvim
     nixvim.url = "github:guilherme-romanholo/nixvim";
+    # WSL
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     # Disko
     disko = {
       url = "github:nix-community/disko";

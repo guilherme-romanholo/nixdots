@@ -7,6 +7,10 @@
 }: let
   cfg = config.optional.wsl;
 in {
+  imports = [
+    inputs.nixos-wsl.nixosModules.wsl
+  ];
+
   options.optional.wsl = {
     enable = lib.mkEnableOption "Enable WSL Support";
 
@@ -18,15 +22,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    imports = [
-      nixos-wsl.nixosModules.wsl
-    ];
-
     wsl = {
       enable = true;
       defaultUser = cfg.defaultUser;
       startMenuLaunchers = true;
       usbip.enable = true;
+      wslConf.network.generateHosts = false;
     };
   };
 }
