@@ -27,6 +27,6 @@ in  {
       iconName = theme.iconName;
     };
 
-    waybar-theme.enable = true;
+    waybar-style.enable = true;
   };
 }

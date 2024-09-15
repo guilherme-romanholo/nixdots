@@ -15,6 +15,8 @@
     nixvim.url = "github:guilherme-romanholo/nixvim";
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    # Stylix
+    stylix.url = "github:danth/stylix";
     # Disko
     disko = {
       url = "github:nix-community/disko";
