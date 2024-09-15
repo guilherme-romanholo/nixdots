@@ -1,6 +1,7 @@
 {
   outputs,
   user,
+  pkgs,
   ...
 }: {
   imports = [
@@ -16,4 +17,8 @@
       email = user.email;
     };
   };
+
+  home.packages = with pkgs; [
+    neovim
+  ];
 }
