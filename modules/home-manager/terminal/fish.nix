@@ -43,6 +43,10 @@ in {
         vim = "nvim";
         gs = "git status";
       };
+
+      functions = {
+        fish_greeting = '''';
+      };
     };
   };
 }
