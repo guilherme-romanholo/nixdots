@@ -16,10 +16,6 @@ in  {
     ./hardware-configuration.nix
   ];  
 
-  environment.systemPackages = with pkgs; [
-    neovim
-  ];
-
   ############
   # Optional #
   ############

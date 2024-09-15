@@ -18,10 +18,6 @@ in  {
     inputs.disko.nixosModules.disko
   ];  
 
-  environment.systemPackages = with pkgs; [
-    neovim
-  ];
-
   ############
   # Optional #
   ############
