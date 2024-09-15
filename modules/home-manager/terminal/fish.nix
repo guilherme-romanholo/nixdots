@@ -16,7 +16,7 @@ in {
       devenv
       ripgrep
     ];
-    
+
     programs.eza = {
       enable = true;
       icons = true;

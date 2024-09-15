@@ -5,7 +5,7 @@
   ...
 }: let
   vars = import ./default.nix;
-in  {
+in {
   imports = [
     # Modules
     outputs.nixosModules.core
@@ -16,7 +16,7 @@ in  {
     ./disko.nix
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
-  ];  
+  ];
 
   ############
   # Optional #
@@ -25,7 +25,7 @@ in  {
   optional = {
     printer = {
       enable = true;
-      drivers = [ pkgs.gutenprint ];
+      drivers = [pkgs.gutenprint];
     };
 
     docker.enable = true;
@@ -37,7 +37,7 @@ in  {
   ###########
 
   desktop = {
-    xserver = { 
+    xserver = {
       enable = true;
       layout = "br";
     };

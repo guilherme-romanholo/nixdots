@@ -35,7 +35,10 @@ in {
       config = {
         modifier = cfg.modKey;
 
-        terminal = if config.programs.kitty.enable then "kitty" else "foot";
+        terminal =
+          if config.programs.kitty.enable
+          then "kitty"
+          else "foot";
 
         menu = "${pkgs.wofi}/bin/wofi";
 

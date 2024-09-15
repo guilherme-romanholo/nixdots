@@ -5,7 +5,7 @@
   ...
 }: let
   vars = import ./default.nix;
-in  {
+in {
   imports = [
     # Modules
     outputs.nixosModules.core
@@ -14,7 +14,7 @@ in  {
 
     # Hardware
     ./hardware-configuration.nix
-  ];  
+  ];
 
   ############
   # Optional #

@@ -1,9 +1,6 @@
-{
-  outputs,
-  ...
-}: let
+{outputs, ...}: let
   theme = import ../../themes;
-in  {
+in {
   imports = [
     outputs.homeManagerModules.colors
   ];
