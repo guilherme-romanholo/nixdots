@@ -80,6 +80,7 @@
         value = lib.nixosSystem {
           modules = [
             ./hosts/${host.hostname}/configuration.nix
+            ./scripts
           ];
           specialArgs = {
             inherit inputs;
