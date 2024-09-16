@@ -67,6 +67,9 @@
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs lib;};
 
+    # Your custom language templates
+    templates = import ./templates;
+
     # Reusable nixos modules you might want to export
     nixosModules = import ./modules/nixos;
 
