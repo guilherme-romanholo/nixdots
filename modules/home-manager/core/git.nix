@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  cfg = config.terminal.git;
+  cfg = config.core.git;
 in {
-  options.terminal.git = {
+  options.core.git = {
     enable = lib.mkEnableOption "Enable Git";
 
     username = lib.mkOption {

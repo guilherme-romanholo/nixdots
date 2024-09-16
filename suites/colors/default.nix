@@ -1,10 +1,6 @@
-{outputs, ...}: let
+let
   theme = import ../../themes;
 in {
-  imports = [
-    outputs.homeManagerModules.colors
-  ];
-
   colors = {
     stylix = {
       enable = true;
