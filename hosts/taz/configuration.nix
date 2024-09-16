@@ -4,6 +4,8 @@
   ...
 }: let
   vars = import ./default.nix;
+  host = vars;
+  user = builtins.head vars.users;
 in {
   imports = [
     # Modules
@@ -15,7 +17,14 @@ in {
     ./disko.nix
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
+
+    inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    extraSpecialArgs = {inherit inputs outputs;};
+    users.guilherme = import ../../suites {inherit outputs host user;};
+  };
 
   # Core
   core = {
