@@ -17,20 +17,43 @@ in {
     inputs.disko.nixosModules.disko
   ];
 
-  ############
-  # Optional #
-  ############
+  # Core
+  core = {
+    localtime = {
+      enable = true;
+      locale = "pt_BR.UTF-8";
+      consoleKeymap = "br-abnt2";
+      timezone = "America/Sao_Paulo";
+    };
 
+    video = {
+      enable = true;
+      driver = "";
+    };
+
+    network = {
+      enable = true;
+      hostname = vars.hostname;
+    };
+
+    user = {
+      enable = true;
+      users = vars.users;
+    };
+
+    nix.enable = true;
+    sound.enable = true;
+    bootloader.enable = true;
+  };
+
+  # Optional
   optional = {
     docker.enable = true;
     libvirt.enable = true;
     openssh.enable = true;
   };
 
-  ###########
-  # Desktop #
-  ###########
-
+  # Desktop
   desktop = {
     xserver = {
       enable = true;
@@ -39,44 +62,6 @@ in {
 
     sway.enable = true;
     sddm.enable = true;
-  };
-
-  ########
-  # Core #
-  ########
-
-  core = {
-    # Config video
-    video = {
-      enable = true;
-      driver = "";
-    };
-    # Config timezone
-    localtime = {
-      enable = true;
-      locale = "pt_BR.UTF-8";
-      consoleKeymap = "br-abnt2";
-      timezone = "America/Sao_Paulo";
-    };
-    # Config nix
-    nix.enable = true;
-    # Config network
-    network = {
-      enable = true;
-      hostname = vars.hostname;
-    };
-    # Bootloader
-    bootloader = {
-      enable = true;
-      OSProber = true;
-    };
-    # Config sound
-    sound.enable = true;
-    # Config Users
-    user = {
-      enable = true;
-      users = vars.users;
-    };
   };
 
   system.stateVersion = vars.stateVersion;

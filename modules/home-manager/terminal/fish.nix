@@ -43,16 +43,16 @@ in {
         vim = "nvim";
         gs = "git status";
       };
-      
+
       interactiveShellInit = ''
         set fish_greeting
         set -g theme_powerline_fonts no
         set -g theme_nerd_fonts yes
       '';
 
-      plugins = [
-        {name = "bobthefish"; src = pkgs.fishPlugins.bobthefish.src;}
-      ];
+      # plugins = [
+      #   {name = "bobthefish"; src = pkgs.fishPlugins.bobthefish.src;}
+      # ];
     };
   };
 }

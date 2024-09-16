@@ -11,41 +11,44 @@
     extra-substituters = "https://devenv.cachix.org";
   };
 
-  outputs = { self, nixpkgs, devenv, systems, ... } @ inputs:
-    let
-      forEachSystem = nixpkgs.lib.genAttrs (import systems);
-    in
-    {
-      packages = forEachSystem (system: {
-        devenv-up = self.devShells.${system}.default.config.procfileScript;
-      });
+  outputs = {
+    self,
+    nixpkgs,
+    devenv,
+    systems,
+    ...
+  } @ inputs: let
+    forEachSystem = nixpkgs.lib.genAttrs (import systems);
+  in {
+    packages = forEachSystem (system: {
+      devenv-up = self.devShells.${system}.default.config.procfileScript;
+    });
 
-      devShells = forEachSystem
-        (system:
-          let
-            pkgs = nixpkgs.legacyPackages.${system};
-          in
-          {
-            default = devenv.lib.mkShell {
-              inherit inputs pkgs;
-              modules = [
-                {
-                  languages = {
-                    c.enable = true;
-                  };
+    devShells =
+      forEachSystem
+      (system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        default = devenv.lib.mkShell {
+          inherit inputs pkgs;
+          modules = [
+            {
+              languages = {
+                c.enable = true;
+              };
 
-                  packages = with pkgs; [
-                    cmake
-                    ncurses
-                  ];
-
-                  enterShell = ''
-                    printf "\033[96mC Language Template!\033[0m\n"
-                    gcc --version | grep gcc
-                  '';
-                }
+              packages = with pkgs; [
+                cmake
+                ncurses
               ];
-            };
-          });
-    };
+
+              enterShell = ''
+                printf "\033[96mC Language Template!\033[0m\n"
+                gcc --version | grep gcc
+              '';
+            }
+          ];
+        };
+      });
+  };
 }
