@@ -1,13 +1,12 @@
 {
   inputs,
   outputs,
+  host,
   ...
-}: let
-  vars = import ./default.nix;
-in {
+}: {
   imports = [
     # Modules
-    outputs.nixosModules.core
+    ../common
     outputs.nixosModules.desktop
     outputs.nixosModules.optional
 
@@ -16,35 +15,6 @@ in {
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
   ];
-
-  # Core
-  core = {
-    localtime = {
-      enable = true;
-      locale = "pt_BR.UTF-8";
-      consoleKeymap = "br-abnt2";
-      timezone = "America/Sao_Paulo";
-    };
-
-    video = {
-      enable = true;
-      driver = "amdgpu";
-    };
-
-    network = {
-      enable = true;
-      hostname = vars.hostname;
-    };
-
-    user = {
-      enable = true;
-      users = vars.users;
-    };
-
-    nix.enable = true;
-    sound.enable = true;
-    bootloader.enable = true;
-  };
 
   # Optional
   optional = {
@@ -55,12 +25,10 @@ in {
   desktop = {
     xserver = {
       enable = true;
-      layout = "br";
+      layout = host.kblayout;
     };
 
     sway.enable = true;
     sddm.enable = true;
   };
-
-  system.stateVersion = vars.stateVersion;
 }

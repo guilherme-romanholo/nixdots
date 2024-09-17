@@ -1,21 +1,6 @@
-{
-  outputs,
-  user,
-  pkgs,
-  ...
-}: {
-  imports = [
-    outputs.homeManagerModules.terminal
-  ];
-
+{pkgs, ...}: {
   terminal = {
     fish.enable = true;
-
-    git = {
-      enable = true;
-      username = user.username;
-      email = user.email;
-    };
   };
 
   home.packages = with pkgs; [
