@@ -68,7 +68,7 @@
     overlays = import ./overlays {inherit inputs outputs lib;};
 
     # Your custom theme
-    theme = import ./themes;
+    theme = import ./themes/default;
 
     # Your custom language templates
     templates = import ./templates;

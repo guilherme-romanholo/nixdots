@@ -6,18 +6,17 @@ pkgs.writeShellScriptBin "theme-switch" ''
   if [ "$1" = "help" ]; then
     echo "Usage: theme-switch [theme]"
     echo "Note: Restart system to apply the changes correctly."
-    \ls $color_path -I default.nix
+    \ls $color_path -I default
     exit 0
   fi
 
   cd $color_path
 
-  mv default.nix default.nix.temp
-  ln -s $1/default.nix default.nix
+  mv default default.temp
+  ln -s $1 default
 
   sudo nixos-rebuild switch --flake ~/.dotfiles
-  ${pkgs.home-manager}/bin/home-manager switch --flake ~/.dotfiles
 
-  rm default.nix
-  mv default.nix.temp default.nix
+  rm default
+  mv default.temp default
 ''

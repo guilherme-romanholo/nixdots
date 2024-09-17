@@ -1,1 +1,0 @@
-gruvbox/default.nix
