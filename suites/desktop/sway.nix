@@ -1,4 +1,4 @@
-{outputs, ...}: {
+{outputs, host, ...}: {
   imports = [
     outputs.homeManagerModules.desktop
   ];
@@ -6,7 +6,7 @@
   desktop = {
     sway = {
       enable = true;
-      kblayout = "br";
+      kblayout = host.kblayout;
     };
 
     waybar = {

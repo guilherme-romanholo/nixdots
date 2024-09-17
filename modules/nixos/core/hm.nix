@@ -35,7 +35,7 @@ in {
     home-manager = let
       host = cfg.hostAttrs;
     in {
-      extraSpecialArgs = {inherit inputs outputs;};
+      extraSpecialArgs = {inherit inputs outputs host;};
       users = builtins.listToAttrs (map
         (user: {
           name = user.username;
