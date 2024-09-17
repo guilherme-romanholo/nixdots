@@ -1,11 +1,12 @@
 {
   outputs,
   host,
+  lib,
   ...
 }: {
   imports = [
     # Modules
-    outputs.nixosModules.core
+    ../common
     outputs.nixosModules.desktop
     outputs.nixosModules.optional
 
@@ -15,24 +16,9 @@
 
   # Core
   core = {
-    localtime = {
-      enable = true;
-      locale = "pt_BR.UTF-8";
-      consoleKeymap = "br-abnt2";
-      timezone = "America/Sao_Paulo";
-    };
-
-    network = {
-      enable = true;
-      hostname = host.hostname;
-    };
-
-    user = {
-      enable = true;
-      users = host.users;
-    };
-
-    nix.enable = true;
+    video.enable = lib.mkDefault false;
+    sound.enable = lib.mkDefault false;
+    bootloader.enable = lib.mkDefault false;
   };
 
   # Optional
@@ -42,6 +28,4 @@
       defaultUser = (builtins.head host.users).username;
     };
   };
-
-  system.stateVersion = host.stateVersion;
 }

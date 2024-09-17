@@ -6,7 +6,7 @@
 }: {
   imports = [
     # Modules
-    outputs.nixosModules.core
+    ../common
     outputs.nixosModules.desktop
     outputs.nixosModules.optional
 
@@ -15,35 +15,6 @@
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
   ];
-
-  # Core
-  core = {
-    localtime = {
-      enable = true;
-      locale = "pt_BR.UTF-8";
-      consoleKeymap = "br-abnt2";
-      timezone = "America/Sao_Paulo";
-    };
-
-    video = {
-      enable = true;
-      driver = "amdgpu";
-    };
-
-    network = {
-      enable = true;
-      hostname = host.hostname;
-    };
-
-    user = {
-      enable = true;
-      users = host.users;
-    };
-
-    nix.enable = true;
-    sound.enable = true;
-    bootloader.enable = true;
-  };
 
   # Optional
   optional = {
@@ -60,6 +31,4 @@
     sway.enable = true;
     sddm.enable = true;
   };
-
-  system.stateVersion = host.stateVersion;
 }
