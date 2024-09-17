@@ -3,9 +3,7 @@
   outputs,
   host,
   ...
-}: let
-  user = builtins.head host.users;
-in {
+}: {
   imports = [
     # Modules
     outputs.nixosModules.core
@@ -16,14 +14,7 @@ in {
     ./disko.nix
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
-
-    inputs.home-manager.nixosModules.home-manager
   ];
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
-    users.guilherme = import ../../suites {inherit outputs host user;};
-  };
 
   # Core
   core = {
@@ -56,6 +47,12 @@ in {
 
   # Optional
   optional = {
+    hm = {
+      enable = true;
+      hostAttrs = host;
+      homeConfig = ../../suites;
+    };
+
     docker.enable = true;
     libvirt.enable = true;
     openssh.enable = true;

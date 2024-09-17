@@ -86,6 +86,7 @@
             ./scripts
           ];
           specialArgs = {
+            inherit host;
             inherit inputs;
             inherit outputs;
           };

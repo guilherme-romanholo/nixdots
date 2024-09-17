@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hm.nix
     ./wsl.nix
     ./zfs.nix
     ./docker.nix
