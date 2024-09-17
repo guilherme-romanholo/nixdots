@@ -5,13 +5,13 @@
   config,
   ...
 }: let
-  cfg = config.optional.hm;
+  cfg = config.core.hm;
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  options.optional.hm = {
+  options.core.hm = {
     enable = lib.mkEnableOption "Enable Home-Manager Module";
 
     hostAttrs = lib.mkOption {

@@ -37,7 +37,7 @@
       builtins.map (host: import host)
       (builtins.map (file: (builtins.toString ./hosts) + "/" + file)
         (builtins.attrNames
-          (builtins.removeAttrs (builtins.readDir ./hosts) ["template"])));
+          (builtins.removeAttrs (builtins.readDir ./hosts) ["common"])));
 
     # Define lib to use in flake
     lib = nixpkgs.lib // home-manager.lib;
