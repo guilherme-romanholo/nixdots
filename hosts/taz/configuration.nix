@@ -18,12 +18,6 @@
 
   # Optional
   optional = {
-    hm = {
-      enable = true;
-      hostAttrs = host;
-      homeConfig = ../../suites;
-    };
-
     docker.enable = true;
     libvirt.enable = true;
     openssh.enable = true;
@@ -33,7 +27,7 @@
   desktop = {
     xserver = {
       enable = true;
-      layout = "br";
+      layout = host.kblayout;
     };
 
     sway.enable = true;

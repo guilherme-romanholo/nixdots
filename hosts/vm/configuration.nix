@@ -25,7 +25,7 @@
   desktop = {
     xserver = {
       enable = true;
-      layout = "br";
+      layout = host.kblayout;
     };
 
     sway.enable = true;

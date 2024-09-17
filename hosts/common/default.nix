@@ -17,6 +17,12 @@
       timezone = host.timezone;
     };
 
+    hm = {
+      enable = true;
+      hostAttrs = host;
+      homeConfig = ../../suites;
+    };
+
     video = {
       enable = true;
       driver = host.videoDriver;

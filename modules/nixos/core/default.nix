@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hm.nix
     ./nix.nix
     ./user.nix
     ./sound.nix
