@@ -65,7 +65,10 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs lib;};
+    overlays = import ./overlays {inherit inputs outputs lib;};
+
+    # Your custom theme
+    theme = import ./themes;
 
     # Your custom language templates
     templates = import ./templates;
