@@ -1,6 +1,8 @@
-{outputs, ...}: let
-  vars = import ./default.nix;
-in {
+{
+  outputs,
+  host,
+  ...
+}: {
   imports = [
     # Modules
     outputs.nixosModules.core
@@ -22,12 +24,12 @@ in {
 
     network = {
       enable = true;
-      hostname = vars.hostname;
+      hostname = host.hostname;
     };
 
     user = {
       enable = true;
-      users = vars.users;
+      users = host.users;
     };
 
     nix.enable = true;
@@ -37,9 +39,9 @@ in {
   optional = {
     wsl = {
       enable = true;
-      defaultUser = (builtins.head vars.users).username;
+      defaultUser = (builtins.head host.users).username;
     };
   };
 
-  system.stateVersion = vars.stateVersion;
+  system.stateVersion = host.stateVersion;
 }

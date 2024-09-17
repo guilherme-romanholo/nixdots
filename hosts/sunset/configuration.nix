@@ -2,10 +2,9 @@
   inputs,
   outputs,
   pkgs,
+  host,
   ...
-}: let
-  vars = import ./default.nix;
-in {
+}: {
   imports = [
     # Modules
     outputs.nixosModules.core
@@ -34,12 +33,12 @@ in {
 
     network = {
       enable = true;
-      hostname = vars.hostname;
+      hostname = host.hostname;
     };
 
     user = {
       enable = true;
-      users = vars.users;
+      users = host.users;
     };
 
     bootloader = {
@@ -73,5 +72,5 @@ in {
     sddm.enable = true;
   };
 
-  system.stateVersion = vars.stateVersion;
+  system.stateVersion = host.stateVersion;
 }
