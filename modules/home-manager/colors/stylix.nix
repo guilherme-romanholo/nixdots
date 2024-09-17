@@ -47,7 +47,6 @@ in {
       image = cfg.wallpaper;
       polarity = cfg.polarity;
       base16Scheme = cfg.colorscheme;
-      # base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.colorscheme}.yaml";
 
       cursor = {
         package = pkgs.${cfg.cursorPkg};

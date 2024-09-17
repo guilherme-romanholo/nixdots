@@ -1,23 +1,21 @@
-let
-  theme = import ../../themes;
-in {
+{ outputs, ... }: {
   colors = {
     stylix = {
       enable = true;
 
-      polarity = theme.polarity;
-      wallpaper = theme.wallpaper;
-      colorscheme = theme.colorscheme;
+      polarity = outputs.theme.polarity;
+      wallpaper = outputs.theme.wallpaper;
+      colorscheme = outputs.theme.colorscheme;
 
-      cursorPkg = theme.cursorPkg;
-      cursorName = theme.cursorName;
+      cursorPkg = outputs.theme.cursorPkg;
+      cursorName = outputs.theme.cursorName;
     };
 
     gtk = {
       enable = true;
 
-      iconPkg = theme.iconPkg;
-      iconName = theme.iconName;
+      iconPkg = outputs.theme.iconPkg;
+      iconName = outputs.theme.iconName;
     };
 
     waybar-style.enable = true;

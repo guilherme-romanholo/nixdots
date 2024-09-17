@@ -1,6 +1,7 @@
 # This file defines overlays
 {
   inputs,
+  outputs,
   lib,
   ...
 }: {
@@ -22,7 +23,7 @@
   modifications = final: prev: {
     # Custom nixvim overlay
     neovim = inputs.nixvim.packages.${final.system}.default.nixvimExtend {
-      config.colorschemes.base16.colorscheme = lib.mkForce (import ../themes).colorscheme;
+      config.colorschemes.base16.colorscheme = lib.mkForce outputs.theme.colorscheme;
     };
     # Remove spaces from theme name
     capitaine-cursors-themed = prev.capitaine-cursors-themed.overrideAttrs (oldAttrs: {
