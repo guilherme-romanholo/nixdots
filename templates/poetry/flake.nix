@@ -35,12 +35,21 @@
             {
               languages.python = {
                 enable = true;
-                venv.enable = true;
+
+                poetry = {
+                  enable = true;
+                  activate.enable = true;
+                  install = {
+                    enable = true;
+                    compile = false;
+                  };
+                };
               };
 
               enterShell = ''
                 printf "\033[32mPython and Poetry Devenv:\033[0m\n"
                 python3 --version
+                poetry --version
               '';
             }
           ];
