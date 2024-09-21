@@ -16,9 +16,9 @@
 
   # Core
   core = {
-    video.enable = lib.mkDefault false;
-    sound.enable = lib.mkDefault false;
-    bootloader.enable = lib.mkDefault false;
+    video.enable = lib.mkForce false;
+    sound.enable = lib.mkForce false;
+    bootloader.enable = lib.mkForce false;
   };
 
   # Optional
