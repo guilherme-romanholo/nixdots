@@ -20,5 +20,9 @@
     swaylock = {
       enable = true;
     };
+
+    mako = {
+      enable = true;
+    };
   };
 }
