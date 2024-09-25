@@ -10,7 +10,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.mako = {
+    services.mako = {
       enable = true;
 
       borderSize = 1;
