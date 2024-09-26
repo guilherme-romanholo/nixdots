@@ -1,0 +1,5 @@
+{
+  develop = {
+    vscode.enable = true;
+  };
+}

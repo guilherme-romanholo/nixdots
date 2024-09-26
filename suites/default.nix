@@ -10,6 +10,7 @@
       outputs.homeManagerModules.apps
       outputs.homeManagerModules.colors
       outputs.homeManagerModules.desktop
+      outputs.homeManagerModules.develop
       outputs.homeManagerModules.terminal
     ]
     ++ map (suite: ./. + "/${suite}") user.suites

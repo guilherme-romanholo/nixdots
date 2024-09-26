@@ -4,27 +4,25 @@
   pkgs,
   ...
 }: let
-  cfg = config.apps.vscode;
+  cfg = config.develop.vscode;
 in {
-  options.apps.vscode = {
+  options.develop.vscode = {
     enable = lib.mkEnableOption "Enable Vscode";
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      clang-tools
+    ];
+
     programs.vscode = {
       enable = true;
+      package = pkgs.vscodium;
 
       extensions = with pkgs.vscode-extensions; [
-        ms-python.python
-        ms-vscode.cpptools-extension-pack
         llvm-vs-code-extensions.vscode-clangd
+        ms-python.python
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "apc-extension";
-          publisher = "drcika";
-          version = "0.4.1";
-          sha256 = "sha256-fq2qlxc7+MpwkraVClB0FGsR0K1/2MTzQ0SYULMx4Kg=";
-        }
         {
           name = "symbols";
           publisher = "miguelsolorio";
@@ -55,16 +53,10 @@ in {
         "editor.minimap.enabled" = false;
         "editor.scrollbar.vertical" = "hidden";
         "editor.scrollbar.horizontal" = "hidden";
-        # "workbench.statusBar.visible" = false;
+        "workbench.statusBar.visible" = false;
         "window.commandCenter" = false;
         "workbench.layoutControl.enabled" = false;
         "explorer.fileNesting.enabled" = true;
-        "apc.electron" = {
-          "titleBarStyle" = "hiddenInset";
-          "opacity" = 0.5;
-          "vibrancy" = "dark";
-          "frame" = false;
-        };
       };
     };
   };
