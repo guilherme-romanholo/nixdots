@@ -6,8 +6,7 @@
 }: let
   cfg = config.apps.vscode;
 in {
-  options.apps.vscode = {
-    enable = lib.mkEnableOption "Enable Vscode";
+  options.apps.vscode = { enable = lib.mkEnableOption "Enable Vscode";
   };
 
   config = lib.mkIf cfg.enable {
@@ -34,6 +33,21 @@ in {
           publisher = "vscodevim";
           version = "1.28.1";
           sha256 = "sha256-cr9gP3/3kB3X8PnhdBUdR0b2ydvqr5RhiFDIZ/6hlTM=";
+        }
+      ];
+
+      keybindings = [
+        {
+          key = "shift+t";
+          command = "workbench.action.terminal.toggleTerminal";
+        }
+        {
+          key = "shift+e";
+          command = "workbench.view.explorer";
+        }
+        {
+          key = "shift+q";
+          command = "workbench.action.closeActiveEditor";
         }
       ];
 
