@@ -80,7 +80,7 @@ in {
 
       opacity = {
         terminal = 0.85;
-        applications = 0.9;
+        applications = 0.85;
       };
     };
   };
