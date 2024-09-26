@@ -43,7 +43,6 @@ in {
         "symbols.hidesExplorerArrows" = false;
         "editor.lineHeight" = 1.8;
         "editor.rulers" = [80 120];
-        "workbench.startupEditor" = "newUntitledFile";
         "editor.renderLineHighlight" = "gutter";
         "editor.fontLigatures" = true;
         "workbench.editor.labelFormat" = "short";
