@@ -1,9 +1,5 @@
-{pkgs, ...}: {
-  terminal = {
+{
+  apps = {
     fish.enable = true;
   };
-
-  home.packages = with pkgs; [
-    neovim
-  ];
 }

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.colors.gtk;
+  cfg = config.optional.gtk;
 in {
-  options.colors.gtk = {
+  options.optional.gtk = {
     enable = lib.mkEnableOption "Enable Gtk";
 
     iconPkg = lib.mkOption {

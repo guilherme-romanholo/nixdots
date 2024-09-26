@@ -1,5 +1,5 @@
 { outputs, ... }: {
-  colors = {
+  optional = {
     stylix = {
       enable = true;
 

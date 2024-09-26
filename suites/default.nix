@@ -8,10 +8,8 @@
     [
       outputs.homeManagerModules.core
       outputs.homeManagerModules.apps
-      outputs.homeManagerModules.colors
       outputs.homeManagerModules.desktop
-      outputs.homeManagerModules.develop
-      outputs.homeManagerModules.terminal
+      outputs.homeManagerModules.optional
     ]
     ++ map (suite: ./. + "/${suite}") user.suites
     ++ map (desktop: ./desktop + "/${desktop}.nix") user.desktops;

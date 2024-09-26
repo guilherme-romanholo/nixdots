@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.develop.vscode;
+  cfg = config.apps.vscode;
 in {
-  options.develop.vscode = {
+  options.apps.vscode = {
     enable = lib.mkEnableOption "Enable Vscode";
   };
 

@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  cfg = config.colors.waybar-style;
+  cfg = config.optional.waybar-style;
 in {
-  options.colors.waybar-style = {
+  options.optional.waybar-style = {
     enable = lib.mkEnableOption "Enable Waybar Style";
   };
 

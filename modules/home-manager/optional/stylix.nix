@@ -5,13 +5,13 @@
   pkgs,
   ...
 }: let
-  cfg = config.colors.stylix;
+  cfg = config.optional.stylix;
 in {
   imports = [
     inputs.stylix.homeManagerModules.stylix
   ];
 
-  options.colors.stylix = {
+  options.optional.stylix = {
     enable = lib.mkEnableOption "Enable Stylix";
 
     colorscheme = lib.mkOption {

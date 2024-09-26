@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.terminal.fish;
+  cfg = config.apps.fish;
 in {
-  options.terminal.fish = {
+  options.apps.fish = {
     enable = lib.mkEnableOption "Enable Fish";
   };
 
@@ -49,10 +49,6 @@ in {
         set -g theme_powerline_fonts no
         set -g theme_nerd_fonts yes
       '';
-
-      # plugins = [
-      #   {name = "bobthefish"; src = pkgs.fishPlugins.bobthefish.src;}
-      # ];
     };
   };
 }
