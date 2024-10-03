@@ -38,15 +38,15 @@ in {
 
       keybindings = [
         {
-          key = "shift+t";
+          key = "ctrl+shift+t";
           command = "workbench.action.terminal.toggleTerminal";
         }
         {
-          key = "shift+e";
+          key = "ctrl+shift+e";
           command = "workbench.view.explorer";
         }
         {
-          key = "shift+q";
+          key = "ctrl+shift+q";
           command = "workbench.action.closeActiveEditor";
         }
       ];
