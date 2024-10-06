@@ -42,7 +42,11 @@
       layout = host.kblayout;
     };
 
+    sddm = {
+      enable = true;
+      theme = "${pkgs.sddm-astronaut-theme}";
+    };
+
     sway.enable = true;
-    sddm.enable = true;
   };
 }

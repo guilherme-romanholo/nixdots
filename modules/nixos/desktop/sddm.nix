@@ -20,10 +20,7 @@ in {
     services.displayManager.sddm = {
       enable = true;
       theme = cfg.theme;
+      package = pkgs.kdePackages.sddm;
     };
-
-    environment.systemPackages = with pkgs; [
-      libsForQt5.qt5.qtgraphicaleffects
-    ];
   };
 }
