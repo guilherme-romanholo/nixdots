@@ -6,7 +6,8 @@
 }: let
   cfg = config.apps.vscode;
 in {
-  options.apps.vscode = { enable = lib.mkEnableOption "Enable Vscode";
+  options.apps.vscode = {
+    enable = lib.mkEnableOption "Enable Vscode";
   };
 
   config = lib.mkIf cfg.enable {
@@ -18,23 +19,25 @@ in {
       enable = true;
       package = pkgs.vscodium;
 
-      extensions = with pkgs.vscode-extensions; [
-        llvm-vs-code-extensions.vscode-clangd
-        ms-python.python
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "symbols";
-          publisher = "miguelsolorio";
-          version = "0.0.20";
-          sha256 = "sha256-u5kwrPysf3Fn7Yn9hJg3aIq8XuK+cRtHJlvn9uGdB8U=";
-        }
-        {
-          name = "vim";
-          publisher = "vscodevim";
-          version = "1.28.1";
-          sha256 = "sha256-cr9gP3/3kB3X8PnhdBUdR0b2ydvqr5RhiFDIZ/6hlTM=";
-        }
-      ];
+      extensions = with pkgs.vscode-extensions;
+        [
+          llvm-vs-code-extensions.vscode-clangd
+          ms-python.python
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "symbols";
+            publisher = "miguelsolorio";
+            version = "0.0.20";
+            sha256 = "sha256-u5kwrPysf3Fn7Yn9hJg3aIq8XuK+cRtHJlvn9uGdB8U=";
+          }
+          {
+            name = "vim";
+            publisher = "vscodevim";
+            version = "1.28.1";
+            sha256 = "sha256-cr9gP3/3kB3X8PnhdBUdR0b2ydvqr5RhiFDIZ/6hlTM=";
+          }
+        ];
 
       keybindings = [
         {

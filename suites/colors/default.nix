@@ -1,4 +1,4 @@
-{ outputs, ... }: {
+{outputs, ...}: {
   optional = {
     stylix = {
       enable = true;

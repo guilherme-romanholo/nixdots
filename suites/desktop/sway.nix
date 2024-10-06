@@ -1,4 +1,8 @@
-{outputs, host, ...}: {
+{
+  outputs,
+  host,
+  ...
+}: {
   imports = [
     outputs.homeManagerModules.desktop
   ];
