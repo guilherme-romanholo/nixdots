@@ -48,5 +48,6 @@
     };
 
     sway.enable = true;
+    xfce.enable = true;
   };
 }

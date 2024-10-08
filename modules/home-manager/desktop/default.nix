@@ -1,5 +1,6 @@
 {
   imports = [
+    ./i3.nix
     ./mako.nix
     ./sway.nix
     ./wofi.nix

@@ -23,7 +23,7 @@
       # Suites
       suites = ["terminal" "apps" "colors" "develop" "personal"];
       # Only if desktop suite is enabled
-      desktops = ["sway"];
+      desktops = ["sway" "i3"];
     }
   ];
 }
