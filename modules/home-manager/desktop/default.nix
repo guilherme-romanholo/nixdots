@@ -6,5 +6,6 @@
     ./wofi.nix
     ./waybar.nix
     ./swaylock.nix
+    ./nwg-dock.nix
   ];
 }

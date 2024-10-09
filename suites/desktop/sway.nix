@@ -28,5 +28,9 @@
     mako = {
       enable = true;
     };
+
+    nwg-dock = {
+      enable = false;
+    };
   };
 }

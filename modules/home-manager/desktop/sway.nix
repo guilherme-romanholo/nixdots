@@ -44,6 +44,10 @@ in {
 
         bars = lib.mkIf config.programs.waybar.enable [];
 
+        startup = lib.mkIf config.desktop.nwg-dock.enable [
+          { command = "${pkgs.nwg-dock}/bin/nwg-dock -d"; }
+        ];
+
         gaps = {
           inner = 6;
           outer = 4;
