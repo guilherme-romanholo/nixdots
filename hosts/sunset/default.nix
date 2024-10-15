@@ -16,7 +16,7 @@
     {
       # User
       username = "guilherme";
-      groups = ["networkmanager" "wheel"];
+      groups = ["networkmanager" "wheel" "libvirtd"];
       # Git
       gituser = "guilherme-romanholo";
       email = "guilhermeromanholobofo@gmail.com";
