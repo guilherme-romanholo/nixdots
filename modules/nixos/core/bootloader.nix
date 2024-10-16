@@ -14,6 +14,12 @@ in {
       description = "Grub Device";
     };
 
+    uefi = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable Uefi";
+    };
+
     OSProber = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -25,8 +31,9 @@ in {
     # Grub
     boot.loader.grub = {
       enable = true;
-      efiSupport = true;
-      efiInstallAsRemovable = true;
+
+      efiSupport = cfg.uefi;
+      efiInstallAsRemovable = cfg.uefi;
 
       device = cfg.device;
       useOSProber = cfg.OSProber;

@@ -35,6 +35,8 @@ in {
     i18n.defaultLocale = cfg.locale;
 
     i18n.extraLocaleSettings = {
+      LANGUAGE = cfg.locale;
+      LC_ALL = cfg.locale;
       LC_ADDRESS = cfg.locale;
       LC_IDENTIFICATION = cfg.locale;
       LC_MEASUREMENT = cfg.locale;
