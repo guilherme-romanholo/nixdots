@@ -1,6 +1,8 @@
 ### TODO:
 
 - Make like jordanisaacs/dotfiles with defaultConfig and hostConfig to pass in the myLib.mkHost
+- Default.nix in host (configuration.nix) with all configs, to import in myLib.mkHost
+- Base configuration in hosts
 - Hosts folder with machines (config, users, hardware)
 - notusknot/dotfiles-nix and mitchellh/nixos-config
 
