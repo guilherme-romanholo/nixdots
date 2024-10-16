@@ -1,7 +1,7 @@
 {
   modules = {
     # Core Modules
-    grub = {
+    bootloader = {
       enable = true;
       device = "/dev/vda";
     };
