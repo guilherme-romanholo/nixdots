@@ -30,7 +30,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     # Enable sound
-    sound.enable = true;
     security.rtkit.enable = true;
 
     # Enable pulseaudio
