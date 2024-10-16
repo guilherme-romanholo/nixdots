@@ -42,6 +42,7 @@
 
     xserver = {
       enable = true;
+      layout = "br";
     };
   };
 
