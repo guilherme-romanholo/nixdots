@@ -23,6 +23,6 @@ lib.nixosSystem {
     ../hosts/${hostname}/hardware-configuration.nix
 
     # Modules
-    ../modules
+    ../modules/nixos
   ];
 }
