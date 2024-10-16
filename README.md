@@ -2,6 +2,7 @@
 
 - Make like jordanisaacs/dotfiles with defaultConfig and hostConfig to pass in the myLib.mkHost
 - Hosts folder with machines (config, users, hardware)
+- notusknot/dotfiles-nix and mitchellh/nixos-config
 
 ### Install:
 
