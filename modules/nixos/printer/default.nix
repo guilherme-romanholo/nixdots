@@ -10,6 +10,7 @@ in {
 
     drivers = lib.mkOption {
       type = lib.types.listOf lib.types.package;
+      default = [];
       description = "Printer Drivers List";
     };
   };
