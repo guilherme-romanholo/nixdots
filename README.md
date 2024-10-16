@@ -1,7 +1,7 @@
 ### TODO:
 
-- System and Home folder with modules bundles
-- Hosts folder with machines (config, vars, hardware)
+- Make like jordanisaacs/dotfiles with defaultConfig and hostConfig to pass in the myLib.mkHost
+- Hosts folder with machines (config, users, hardware)
 
 ### Install:
 
