@@ -1,10 +1,9 @@
 ### TODO:
 
-- Make like jordanisaacs/dotfiles with defaultConfig and hostConfig to pass in the myLib.mkHost
-- Default.nix in host (configuration.nix) with all configs, to import in myLib.mkHost
-- Base configuration in hosts
-- Hosts folder with machines (config, users, hardware)
-- notusknot/dotfiles-nix and mitchellh/nixos-config
+- Colocar as configurações base dentro do mkHost, passando como argumento local, timezone, etc ...
+- Colocar um argumento para a configuração que será importada da pasta hosts (específica)
+- Colocar um argumento isWsl para ligar ou desligar o bootloader (default false)
+- Colocar um argumento para os usuários que serão utilizados pelo mkUser (pensar melhor sobre HM)
 
 ### Install:
 
