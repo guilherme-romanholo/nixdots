@@ -20,7 +20,7 @@
 
     localtime = {
       locale = "pt_BR.UTF-8";
-      timeZone = "America/Sao_Paulo";
+      timezone = "America/Sao_Paulo";
       consoleKeymap = "br-abnt2";
     };
 
