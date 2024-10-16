@@ -5,16 +5,19 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: {
+  outputs = {nixpkgs, ...} @ inputs: let
+    inherit (nixpkgs) lib;
+
+    # Import myLib functions
+    myLib = import ./lib {inherit lib inputs;};
+  in {
     # NixOS Configurations
     nixosConfigurations = {
       # VM Config
-      vm = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/vm/configuration.nix
-          ./hosts/vm/hardware-configuration.nix
-        ];
+      vm = myLib.mkHost {
+        hostname = "vm";
+        system = "x86_64-linux";
+        stateVersion = "24.05";
       };
     };
   };
