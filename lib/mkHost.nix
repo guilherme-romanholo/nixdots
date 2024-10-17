@@ -12,33 +12,34 @@
   uefi ? false,
   grubDevice ? "",
   users,
-  config
+  config,
 }:
 lib.nixosSystem {
   inherit system;
-
   specialArgs = {inherit inputs;};
-  modules = [
-    # Host Settings
-    {
-      networking.hostName = hostname;
-      system.stateVersion = stateVersion;
-    }
 
+  modules = [
     # Host Configs
     config
 
     # Modules
     ../modules/nixos
 
+    # Base modules config
     {
+      networking.hostName = hostname;
+      system.stateVersion = stateVersion;
+
       modules = {
-        # Enable core modules 
         core.enable = true;
 
         bootloader = {
-          device = grubDevice;
+          enable =
+            if wsl
+            then lib.mkDefault false
+            else true;
           uefi = uefi;
+          device = grubDevice;
         };
 
         localtime = {

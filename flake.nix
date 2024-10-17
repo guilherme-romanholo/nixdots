@@ -8,6 +8,7 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     inherit (nixpkgs) lib;
+    # Lib with my functions
     myLib = import ./lib {inherit lib inputs;};
   in {
     # NixOS Configurations
@@ -24,7 +25,10 @@
         grubDevice = "/dev/vda";
 
         users = [
-          {username = "nixos"; groups = ["networkmanager" "wheel"];}
+          {
+            username = "nixos";
+            groups = ["networkmanager" "wheel"];
+          }
         ];
 
         config = import ./hosts/vm;
