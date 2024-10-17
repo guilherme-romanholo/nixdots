@@ -10,13 +10,13 @@ in {
 
     timezone = lib.mkOption {
       type = lib.types.str;
-      default = "Etc/GMT";
+      default = "America/Sao_Paulo";
       description = "System Timezone";
     };
 
     locale = lib.mkOption {
       type = lib.types.str;
-      default = "en_US.UTF-8";
+      default = "pt_BR.UTF-8";
       description = "System locale";
     };
 

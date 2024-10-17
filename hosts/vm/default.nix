@@ -14,11 +14,6 @@
       device = "/dev/vda";
     };
 
-    localtime = {
-      locale = "pt_BR.UTF-8";
-      timezone = "America/Sao_Paulo";
-    };
-
     user.users = [
       {
         username = "nixos";
@@ -27,8 +22,6 @@
     ];
 
     graphical.enable = true;
-    xserver.layout = "br";
-
     openssh.enable = true;
     printer.enable = true;
   };
