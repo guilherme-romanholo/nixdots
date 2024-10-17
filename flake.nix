@@ -13,6 +13,14 @@
     myLib = import ./lib {inherit lib inputs;};
   in {
     # NixOS Configurations
-    nixosConfigurations = import ./hosts {inherit myLib;};
+    nixosConfigurations = {
+      # Test VM Config
+      vm = myLib.mkHost {
+        hostname = "vm";
+        system = "x86_64-linux";
+        stateVersion = "24.05";
+        config = import ./hosts/vm;
+      };
+    };
   };
 }
