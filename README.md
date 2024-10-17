@@ -1,11 +1,11 @@
 ### TODO:
 
-- Colocar as configurações base dentro do mkHost, passando como argumento local, timezone, etc ...
-- Colocar um argumento para a configuração que será importada da pasta hosts (específica)
-- Colocar um argumento isWsl para ligar ou desligar o bootloader (default false)
-- Colocar um argumento para os usuários que serão utilizados pelo mkUser (pensar melhor sobre HM)
-- Mudar os bundle de módulos, por exemplo fazer um core.enable para habilidar todos
-- Criar uma pasta de users no mesmo estilo de hosts, mas para o home-manager
+- [x] Mudar os bundle de módulos, por exemplo fazer um core.enable para habilidar todos
+- [x] Colocar as configurações base dentro do mkHost, passando como argumento local, timezone, etc ...
+- [x] Colocar um argumento para a configuração que será importada da pasta hosts (específica)
+- [x] Colocar um argumento isWsl para ligar ou desligar o bootloader (default false)
+- [ ] Colocar um argumento para os usuários que serão utilizados pelo mkUser (pensar melhor sobre HM)
+- [ ] Criar uma pasta de users no mesmo estilo de hosts, mas para o home-manager
 
 ### Install:
 
