@@ -7,32 +7,12 @@
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
+    # Nixpkgs Lib
     inherit (nixpkgs) lib;
     # Lib with my functions
     myLib = import ./lib {inherit lib inputs;};
   in {
     # NixOS Configurations
-    nixosConfigurations = {
-      # VM Config
-      vm = myLib.mkHost {
-        hostname = "vm";
-        system = "x86_64-linux";
-        stateVersion = "24.05";
-
-        locale = "pt_BR.UTF-8";
-        timezone = "America/Sao_Paulo";
-
-        grubDevice = "/dev/vda";
-
-        users = [
-          {
-            username = "nixos";
-            groups = ["networkmanager" "wheel"];
-          }
-        ];
-
-        config = import ./hosts/vm;
-      };
-    };
+    nixosConfigurations = import ./hosts {inherit myLib;};
   };
 }
