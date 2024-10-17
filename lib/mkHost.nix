@@ -5,7 +5,14 @@
 }: {
   hostname,
   system,
+  locale,
+  timezone,
   stateVersion,
+  wsl ? false,
+  uefi ? false,
+  grubDevice ? "",
+  users,
+  config
 }:
 lib.nixosSystem {
   inherit system;
@@ -19,10 +26,28 @@ lib.nixosSystem {
     }
 
     # Host Configs
-    ../hosts/${hostname}/configuration.nix
-    ../hosts/${hostname}/hardware-configuration.nix
+    config
 
     # Modules
     ../modules/nixos
+
+    {
+      modules = {
+        # Enable core modules 
+        core.enable = true;
+
+        bootloader = {
+          device = grubDevice;
+          uefi = uefi;
+        };
+
+        localtime = {
+          locale = locale;
+          timezone = timezone;
+        };
+
+        user.users = users;
+      };
+    }
   ];
 }

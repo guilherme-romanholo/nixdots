@@ -22,7 +22,7 @@ in {
 
     consoleKeymap = lib.mkOption {
       type = lib.types.str;
-      default = "us";
+      default = "br-abnt2";
       description = "System Console Keymap";
     };
   };
