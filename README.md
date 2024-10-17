@@ -5,6 +5,7 @@
 - [x] Colocar um argumento para a configuração que será importada da pasta hosts (específica)
 - [x] Colocar um argumento isWsl para ligar ou desligar o bootloader (default false)
 - [ ] Colocar um argumento para os usuários que serão utilizados pelo mkUser (pensar melhor sobre HM)
+- [ ] Usar um ifGroupExists para reutilizar o usuário em vários hosts
 - [ ] Criar uma pasta de users no mesmo estilo de hosts, mas para o home-manager
 
 ### Install:
