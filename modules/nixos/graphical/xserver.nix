@@ -11,7 +11,7 @@ in {
 
     layout = lib.mkOption {
       type = lib.types.str;
-      default = "us";
+      default = "br";
       description = "Xkb layout";
     };
 

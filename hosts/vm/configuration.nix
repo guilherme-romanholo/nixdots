@@ -1,21 +1,10 @@
 {
   modules = {
+    core.enable = true;
+
     # Core Modules
     bootloader = {
-      enable = true;
       device = "/dev/vda";
-    };
-
-    network = {
-      enable = true;
-    };
-
-    sound = {
-      enable = true;
-    };
-
-    nix = {
-      enable = true;
     };
 
     localtime = {
@@ -25,13 +14,14 @@
     };
 
     user = {
-      enable = true;
       users = [
         {username = "nixos"; groups = ["networkmanager" "wheel"];}
       ];
     };
 
     # Optional Modules
+    graphical.enable = true;
+
     openssh = {
       enable = true;
     };
@@ -41,7 +31,6 @@
     };
 
     xserver = {
-      enable = true;
       layout = "br";
     };
   };
