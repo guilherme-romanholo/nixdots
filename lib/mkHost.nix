@@ -7,6 +7,7 @@
   system,
   stateVersion,
   config,
+  users,
 }:
 lib.nixosSystem {
   inherit system;
@@ -15,6 +16,10 @@ lib.nixosSystem {
   modules = [
     # Host Configs
     config
+
+    {
+      users.users = builtins.listToAttrs users;
+    }
 
     # Modules
     ../modules/nixos
