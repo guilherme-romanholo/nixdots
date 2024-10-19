@@ -4,11 +4,13 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # WSL
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     # Home-Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # WSL
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    # Stylix
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
