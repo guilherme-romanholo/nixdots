@@ -35,12 +35,9 @@ in {
       config = {
         modifier = cfg.modKey;
 
-        terminal =
-          if config.programs.kitty.enable
-          then "kitty"
-          else "foot";
+        terminal = lib.mkIf config.programs.kitty.enable "kitty";
 
-        menu = "${pkgs.wofi}/bin/wofi";
+        menu = lib.mkIf config.programs.wofi.enable "${pkgs.wofi}/bin/wofi";
 
         bars = lib.mkIf config.programs.waybar.enable [];
 

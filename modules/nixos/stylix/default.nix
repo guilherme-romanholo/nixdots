@@ -15,7 +15,7 @@ in {
     enable = lib.mkEnableOption "Stylix";
 
     colorscheme = lib.mkOption {
-      type = lib.types.attrs;
+      type = lib.types.anything;
       description = "Stylix Colorscheme";
     };
 
