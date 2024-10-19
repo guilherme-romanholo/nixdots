@@ -1,6 +1,7 @@
 {
   inputs,
   nixpkgs,
+  home-manager,
   ...
 }: {
   hostname,
@@ -24,6 +25,7 @@ in
 
       # Modules
       ../modules/nixos
+      home-manager.nixosModules.home-manager
 
       {
         # Host general configs
@@ -38,6 +40,25 @@ in
             }
           )
           users);
+
+        # TODO: Add overlays
+        nixpkgs = {
+          config = {
+            allowUnfree = true;
+          };
+        };
+
+        home-manager = {
+          extraSpecialArgs = {inherit inputs;};
+
+          users = builtins.listToAttrs (map (
+              user: {
+                name = user.name;
+                value = user.hm // {home.stateVersion = stateVersion;};
+              }
+            )
+            users);
+        };
       }
     ];
   }

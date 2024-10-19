@@ -6,11 +6,18 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    # Home-Manager
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     # Lib with my functions
-    myLib = import ./lib {inherit inputs nixpkgs;};
+    myLib = import ./lib {inherit inputs nixpkgs home-manager;};
     # Users
     users = import ./users {inherit myLib;};
   in {

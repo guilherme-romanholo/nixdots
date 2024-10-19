@@ -9,7 +9,6 @@
 
   system = {
     isNormalUser = true;
-    # TODO: If groups exists
     extraGroups = groups;
 
     ignoreShellProgramCheck = true;
@@ -20,6 +19,19 @@
 
   hm =
     {
+      home = {
+        username = name;
+        homeDirectory = "/home/${name}";
+      };
+
+      # TODO: Add overlays
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+        };
+      };
+
+      systemd.user.startServices = "sd-switch";
     }
-    // config;
+    // import config;
 }

@@ -23,13 +23,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # Nixpkgs for global system
-    nixpkgs = {
-      config = {
-        allowUnfree = true;
-      };
-    };
-
     # Nix system configurations
     nix = let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
