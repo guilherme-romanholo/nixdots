@@ -16,14 +16,30 @@
     home-manager,
     ...
   } @ inputs: let
-    # Lib with my functions
+    #########
+    #  LIB  #
+    #########
+
     myLib = import ./lib {inherit inputs nixpkgs home-manager;};
-    # Users
-    users = import ./users {inherit myLib;};
-  in {
-    # NixOS Configurations
-    nixosConfigurations = {
-      # Test VM Config
+
+    #########
+    # USERS #
+    #########
+
+    users = {
+      nixos = myLib.mkUser {
+        name = "nixos";
+        shell = "fish";
+        groups = ["wheel" "networkmanager"];
+        config = ./users/nixos;
+      };
+    };
+
+    #########
+    # HOSTS #
+    #########
+
+    hosts = {
       vm = myLib.mkHost {
         hostname = "vm";
         system = "x86_64-linux";
@@ -32,5 +48,8 @@
         config = import ./hosts/vm;
       };
     };
+  in {
+    # NixOS Configurations
+    nixosConfigurations = hosts;
   };
 }
