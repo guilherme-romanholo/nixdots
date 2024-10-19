@@ -1,7 +1,7 @@
 {myLib, ...}: {
   nixos = myLib.mkUser {
     name = "nixos";
-    shell = "zsh";
+    shell = "fish";
     groups = ["wheel" "networkmanager"];
     config = ./nixos;
   };

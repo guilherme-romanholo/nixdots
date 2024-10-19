@@ -34,17 +34,7 @@ lib.nixosSystem {
       users.users = builtins.listToAttrs (map (
         user: {
           name = user.name;
-          value = {
-            isNormalUser = true;
-            # TODO: If groups exists
-            extraGroups = user.groups;
-
-            shell = pkgs.${user.shell};
-            ignoreShellProgramCheck = true;
-
-            initialPassword = "password";
-            openssh.authorizedKeys.keys = user.authKeys;
-          };
+          value = user.system // {shell = pkgs.${user.shell};};
         })
       users);
     }
