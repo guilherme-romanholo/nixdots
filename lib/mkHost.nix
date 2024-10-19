@@ -14,6 +14,8 @@
   inherit (nixpkgs) lib;
   # Nixpkgs Pkgs
   pkgs = import nixpkgs {inherit system;};
+  # For Users
+  forUsers = users: func: builtins.listToAttrs (map func users);
 in
   lib.nixosSystem {
     inherit system;
@@ -28,18 +30,8 @@ in
       home-manager.nixosModules.home-manager
 
       {
-        # Host general configs
         networking.hostName = hostname;
         system.stateVersion = stateVersion;
-
-        # User configs
-        users.users = builtins.listToAttrs (map (
-            user: {
-              name = user.name;
-              value = user.system // {shell = pkgs.${user.shell};};
-            }
-          )
-          users);
 
         # TODO: Add overlays
         nixpkgs = {
@@ -48,17 +40,15 @@ in
           };
         };
 
-        home-manager = {
-          extraSpecialArgs = {inherit inputs;};
+        users.users = forUsers users (user:
+          lib.attrsets.nameValuePair user.name 
+          (user.system // {shell = pkgs.${user.shell};})
+        );
 
-          users = builtins.listToAttrs (map (
-              user: {
-                name = user.name;
-                value = user.hm // {home.stateVersion = stateVersion;};
-              }
-            )
-            users);
-        };
+        home-manager.users = forUsers users (user:
+          lib.attrsets.nameValuePair user.name
+          (user.hm // {home.stateVersion = stateVersion;})
+        );
       }
     ];
   }
