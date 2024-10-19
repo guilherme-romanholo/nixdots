@@ -7,7 +7,6 @@
 in {
   imports = [
     ./nix.nix
-    ./user.nix
     ./sound.nix
     ./network.nix
     ./localtime.nix
@@ -21,7 +20,6 @@ in {
   config = lib.mkIf cfg.enable {
     modules = {
       nix.enable = true;
-      user.enable = true;
       sound.enable = true;
       network.enable = true;
       localtime.enable = true;
