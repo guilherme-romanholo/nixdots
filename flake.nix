@@ -21,7 +21,6 @@
     #########
     #  LIB  #
     #########
-
     myLib = import ./lib {inherit inputs nixpkgs home-manager;};
 
     #########

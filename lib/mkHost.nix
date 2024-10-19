@@ -39,14 +39,16 @@ in
           };
         };
 
-        users.users = forUsers users (user:
-          lib.attrsets.nameValuePair user.name 
-          (user.system // {shell = pkgs.${user.shell};})
+        users.users = forUsers users (
+          user:
+            lib.attrsets.nameValuePair user.name
+            (user.system // {shell = pkgs.${user.shell};})
         );
 
-        home-manager.users = forUsers users (user:
-          lib.attrsets.nameValuePair user.name
-          (user.hm // {home.stateVersion = stateVersion;})
+        home-manager.users = forUsers users (
+          user:
+            lib.attrsets.nameValuePair user.name
+            (user.hm // {home.stateVersion = stateVersion;})
         );
       }
     ];

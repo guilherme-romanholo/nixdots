@@ -16,24 +16,23 @@
     openssh.authorizedKeys.keys = authKeys;
   };
 
-  hm =
-    {
-      imports = [
-        ../users/${name}
-      ];
+  hm = {
+    imports = [
+      ../users/${name}
+    ];
 
-      home = {
-        username = name;
-        homeDirectory = "/home/${name}";
-      };
-
-      # TODO: Add overlays
-      nixpkgs = {
-        config = {
-          allowUnfree = true;
-        };
-      };
-
-      systemd.user.startServices = "sd-switch";
+    home = {
+      username = name;
+      homeDirectory = "/home/${name}";
     };
+
+    # TODO: Add overlays
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+      };
+    };
+
+    systemd.user.startServices = "sd-switch";
+  };
 }
