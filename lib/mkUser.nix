@@ -3,7 +3,7 @@
   groups,
   shell,
   authKeys ? [],
-  config
+  config,
 }: {
   inherit name shell;
 
@@ -18,7 +18,8 @@
     openssh.authorizedKeys.keys = authKeys;
   };
 
-  hm = {
-
-  } // config;
+  hm =
+    {
+    }
+    // config;
 }
