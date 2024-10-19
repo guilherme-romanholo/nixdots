@@ -7,7 +7,6 @@
     ./sway
     ./kitty
     ./waybar
-    ./stylix
     ./swaylock
     ./vscodium
   ];
