@@ -7,7 +7,6 @@
   hostname,
   system,
   stateVersion,
-  config,
   users,
 }: let
   # Nixpkgs Lib
@@ -23,7 +22,7 @@ in
 
     modules = [
       # Host Specific Configs
-      config
+      ../hosts/${hostname}/configuration.nix
 
       # Modules
       ../modules/nixos

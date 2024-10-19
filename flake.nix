@@ -33,7 +33,6 @@
         name = "nixos";
         shell = "fish";
         groups = ["wheel" "networkmanager"];
-        config = ./users/nixos;
       };
     };
 
@@ -47,7 +46,6 @@
         system = "x86_64-linux";
         users = [users.nixos];
         stateVersion = "24.05";
-        config = import ./hosts/vm;
       };
     };
   in {

@@ -3,7 +3,6 @@
   groups,
   shell,
   authKeys ? [],
-  config,
 }: {
   inherit name shell;
 
@@ -19,6 +18,10 @@
 
   hm =
     {
+      imports = [
+        ../users/${name}
+      ];
+
       home = {
         username = name;
         homeDirectory = "/home/${name}";
@@ -32,6 +35,5 @@
       };
 
       systemd.user.startServices = "sd-switch";
-    }
-    // import config;
+    };
 }

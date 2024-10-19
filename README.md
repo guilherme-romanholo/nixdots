@@ -5,6 +5,7 @@
 - [x] Colocar um argumento para a configuração que será importada da pasta hosts (específica)
 - [x] Colocar um argumento isWsl para ligar ou desligar o bootloader (default false)
 - [X] Criar uma pasta de users no mesmo estilo de hosts, mas para o home-manager
+- [ ] Remover os imports do lib
 - [ ] No overlays fazer como na config anterior, mas no default colocar o nixpkgs com os overlays e allowUnfree
 
 ### Install:
