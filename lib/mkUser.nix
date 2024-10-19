@@ -3,18 +3,11 @@
   groups,
   shell,
   authKeys ? [],
+  config
 }: {
-  system = {
-    inherit name;
-    value = {
-      isNormalUser = true;
-      extraGroups = groups;
+  inherit name groups shell authKeys;
 
-      shell = pkgs.${shell};
-      ignoreShellProgramCheck = true;
+  hm = {
 
-      initialPassword = "password";
-      openssh.authorizedKeys.keys = authKeys;
-    };
-  };
+  } // config;
 }

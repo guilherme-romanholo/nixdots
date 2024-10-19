@@ -1,8 +1,8 @@
 {
-  lib,
   inputs,
+  nixpkgs,
   ...
 }: {
-  mkHost = import ./mkHost.nix {inherit lib inputs;};
+  mkHost = import ./mkHost.nix {inherit inputs nixpkgs;};
   mkUser = import ./mkUser.nix;
 }

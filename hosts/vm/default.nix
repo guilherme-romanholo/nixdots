@@ -14,13 +14,6 @@
       device = "/dev/vda";
     };
 
-    user.users = [
-      {
-        username = "nixos";
-        groups = ["networkmanager" "wheel"];
-      }
-    ];
-
     graphical.enable = true;
     openssh.enable = true;
     printer.enable = true;
