@@ -51,7 +51,7 @@ in
           user:
             mapUser
             user.name
-            [user.hm {home.stateVersion = stateVersion;} {imports = [../hosts/${hostname}/home.nix];}]
+            [user.hm {imports = [../hosts/${hostname}/home.nix];} {home.stateVersion = stateVersion;} ]
         );
       }
     ];
