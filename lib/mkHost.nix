@@ -15,6 +15,7 @@
   pkgs = import nixpkgs {inherit system;};
   # For Users
   forUsers = users: func: builtins.listToAttrs (map func users);
+  mapUser = name: value: (lib.attrsets.nameValuePair name (lib.mkMerge value));
 in
   lib.nixosSystem {
     inherit system;
@@ -41,18 +42,16 @@ in
 
         users.users = forUsers users (
           user:
-            lib.attrsets.nameValuePair user.name
-            (user.system // {shell = pkgs.${user.shell};})
+            mapUser
+            user.name
+            [user.system {shell = pkgs.${user.shell};}]
         );
 
         home-manager.users = forUsers users (
           user:
-            lib.attrsets.nameValuePair user.name
-            (lib.mkMerge [
-              user.hm
-              {home.stateVersion = stateVersion;}
-              {imports = [../hosts/${hostname}/home.nix];}
-            ])
+            mapUser
+            user.name
+            [user.hm {home.stateVersion = stateVersion;} {imports = [../hosts/${hostname}/home.nix];}]
         );
       }
     ];
