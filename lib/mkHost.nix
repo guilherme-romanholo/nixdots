@@ -48,7 +48,11 @@ in
         home-manager.users = forUsers users (
           user:
             lib.attrsets.nameValuePair user.name
-            (user.hm // {home.stateVersion = stateVersion;} // import ../hosts/${hostname}/home.nix)
+            (lib.mkMerge [
+              user.hm
+              {home.stateVersion = stateVersion;}
+              {imports = [../hosts/${hostname}/home.nix];}
+            ])
         );
       }
     ];

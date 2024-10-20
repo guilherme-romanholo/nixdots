@@ -17,10 +17,7 @@
   };
 
   hm = {
-    imports = [
-      ../users/${name}
-      ../modules/home-manager
-    ];
+    imports = [../users/${name} ../modules/home-manager];
 
     home = {
       username = name;

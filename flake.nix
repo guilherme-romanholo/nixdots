@@ -26,7 +26,6 @@
     #########
     # USERS #
     #########
-
     users = {
       nixos = myLib.mkUser {
         name = "nixos";
@@ -38,7 +37,6 @@
     #########
     # HOSTS #
     #########
-
     hosts = {
       vm = myLib.mkHost {
         hostname = "vm";
