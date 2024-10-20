@@ -19,6 +19,7 @@
   hm = {
     imports = [
       ../users/${name}
+      ../modules/home-manager
     ];
 
     home = {

@@ -1,11 +1,7 @@
 {
   imports = [
-    ./hardware.nix
+    ./hardware-configuration.nix
   ];
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   modules = {
     core.enable = true;
@@ -14,7 +10,9 @@
       device = "/dev/vda";
     };
 
+    sway.enable = true;
     graphical.enable = true;
+
     openssh.enable = true;
     printer.enable = true;
   };
