@@ -1,5 +1,11 @@
 {pkgs, ...}: {
-  programs.firefox.enable = true;
+  modules = {
+    fish.enable = true;
+  };
+
+  programs = {
+    firefox.enable = true;
+  };
 
   home.packages = with pkgs; [
     vesktop
