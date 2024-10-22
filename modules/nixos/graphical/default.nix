@@ -8,6 +8,7 @@ in {
   imports = [
     ./opengl.nix
     ./xserver.nix
+    ./tuigreet.nix
   ];
 
   options.modules.graphical = {
@@ -18,6 +19,7 @@ in {
     modules = {
       opengl.enable = true;
       xserver.enable = true;
+      tuigreet.enable = true;
     };
   };
 }
