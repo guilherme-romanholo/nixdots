@@ -10,6 +10,8 @@
 - [ ] Verificar nas configuraçãoes do Redyf para colocar na minha lib
 - [ ] Fazer uma pasta de temas para incluir no host (mkTheme)
 - [ ] Fazer um include de modulos (inclusive home-manager) opcional
+- [ ] Fazer um mkHM para gerenciar apenas o home manager fora do host
+- [ ] Fazer um utils na minha lib
 - [ ] Imports e home state em um só {}
 - [ ] Fazer um AGS para trocar temas
 
