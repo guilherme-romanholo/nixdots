@@ -7,6 +7,11 @@
 - [X] Criar uma pasta de users no mesmo estilo de hosts, mas para o home-manager
 - [ ] Remover os imports do lib
 - [ ] No overlays fazer como na config anterior, mas no default colocar o nixpkgs com os overlays e allowUnfree
+- [ ] Verificar nas configuraçãoes do Redyf para colocar na minha lib
+- [ ] Fazer uma pasta de temas para incluir no host (mkTheme)
+- [ ] Fazer um include de modulos (inclusive home-manager) opcional
+- [ ] Imports e home state em um só {}
+- [ ] Fazer um AGS para trocar temas
 
 ### Install:
 
