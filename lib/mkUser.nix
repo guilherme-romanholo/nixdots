@@ -4,9 +4,10 @@
   shell,
   authKeys ? [],
 }: {
-  inherit name shell;
+  inherit name;
+  inherit shell;
 
-  system = {
+  config = {
     isNormalUser = true;
     extraGroups = groups;
 
@@ -14,23 +15,5 @@
 
     initialPassword = "password";
     openssh.authorizedKeys.keys = authKeys;
-  };
-
-  hm = {
-    imports = [../users/${name} ../modules/home-manager];
-
-    home = {
-      username = name;
-      homeDirectory = "/home/${name}";
-    };
-
-    # TODO: Add overlays
-    nixpkgs = {
-      config = {
-        allowUnfree = true;
-      };
-    };
-
-    systemd.user.startServices = "sd-switch";
   };
 }

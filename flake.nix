@@ -18,14 +18,8 @@
     home-manager,
     ...
   } @ inputs: let
-    #########
-    #  LIB  #
-    #########
     myLib = import ./lib {inherit inputs nixpkgs home-manager;};
 
-    #########
-    # USERS #
-    #########
     users = {
       nixos = myLib.mkUser {
         name = "nixos";
@@ -33,11 +27,8 @@
         groups = ["wheel" "networkmanager"];
       };
     };
-
-    #########
-    # HOSTS #
-    #########
-    hosts = {
+  in {
+    nixosConfigurations = {
       vm = myLib.mkHost {
         hostname = "vm";
         system = "x86_64-linux";
@@ -45,8 +36,5 @@
         stateVersion = "24.05";
       };
     };
-  in {
-    # NixOS Configurations
-    nixosConfigurations = hosts;
   };
 }
