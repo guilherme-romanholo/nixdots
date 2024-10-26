@@ -18,21 +18,16 @@
     home-manager,
     ...
   } @ inputs: let
-    # System archs
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
+    inherit (nixpkgs) lib;
     # For All Systems
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+    forAllSystems = lib.genAttrs lib.systems.flakeExposed;
+    # Packages with nix build, nix shell, ...
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     # Overlays
     overlays = import ./overlays;
     # MyLib
     myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
-
+    # Users
     users = {
       nixos = myLib.mkUser {
         name = "nixos";
@@ -41,8 +36,10 @@
       };
     };
   in {
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    # Custom packages
+    inherit packages;
 
+    # Nixos Configurations
     nixosConfigurations = {
       vm = myLib.mkHost {
         hostname = "vm";
