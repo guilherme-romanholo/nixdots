@@ -6,8 +6,9 @@
   cfg = config.modules.waybar;
 in {
   imports = [
-    ./modules
-    ./style
+    ./style.nix
+    ./config.nix
+    ./modules.nix
   ];
 
   options.modules.waybar = {
@@ -27,33 +28,6 @@ in {
       systemd = {
         enable = true;
         target = cfg.target;
-      };
-
-      settings = {
-        mainBar = {
-          modules-left = [
-            "custom/logo"
-            "sway/workspaces"
-            "tray"
-          ];
-
-          modules-center = [
-            "temperature"
-            "cpu"
-            "memory"
-            "disk"
-          ];
-
-          modules-right = [
-            "pulseaudio"
-            "backlight"
-            "battery"
-            "bluetooth"
-            "network"
-            "clock"
-            "custom/power"
-          ];
-        };
       };
     };
   };
