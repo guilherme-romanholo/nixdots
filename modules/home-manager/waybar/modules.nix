@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+
   programs.waybar.settings = {
     mainBar = {
       "custom/power" = {
@@ -9,7 +10,11 @@
 
       "pulseaudio" = {
         format = "{icon}  {volume}%";
-        format-icons = "";
+        format-bluetooth = "{icon}  {volume}%";
+        scroll-step = 1;
+        format-muted = " muted";
+        format-icons = ["" "" ""];
+        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
       };
 
       "temperature" = {
