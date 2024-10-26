@@ -12,8 +12,8 @@
         format = "{icon}  {volume}%";
         format-bluetooth = "{icon}  {volume}%";
         scroll-step = 1;
-        format-muted = " muted";
-        format-icons = ["" "" ""];
+        format-muted = "{icon} ";
+        format-icons = "";
         on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
       };
 
