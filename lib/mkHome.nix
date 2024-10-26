@@ -1,8 +1,9 @@
-{
+{overlays, ...}: {
   username,
   hostname,
   stateVersion,
-}: {
+}:
+{
   imports = [
     ../users/${username}
     ../modules/home-manager
@@ -15,12 +16,6 @@
     inherit stateVersion;
   };
 
-  # TODO: Add overlays
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   systemd.user.startServices = "sd-switch";
 }
+// overlays

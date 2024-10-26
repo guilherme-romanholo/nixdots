@@ -2,6 +2,7 @@
   inputs,
   nixpkgs,
   home-manager,
+  overlays,
   ...
 }: {
   hostname,
@@ -13,7 +14,7 @@
   # Nixpkgs Lib
   inherit (nixpkgs) lib;
   # Home
-  mkHome = import ./mkHome.nix;
+  mkHome = import ./mkHome.nix {inherit overlays;};
   # Nixpkgs Pkgs
   pkgs = import nixpkgs {inherit system;};
   # For Users
@@ -26,20 +27,15 @@ in
     modules =
       [
         # Host Specific Configs
-        ../hosts/${hostname}/configuration.nix
         ../modules/nixos
+        ../hosts/${hostname}/configuration.nix
+
+        # Add Overlays
+        overlays
 
         {
           networking.hostName = hostname;
           system.stateVersion = stateVersion;
-
-          # TODO: Add overlays
-          nixpkgs = {
-            config = {
-              allowUnfree = true;
-            };
-          };
-
           users.users = forUsers users (
             user:
               lib.attrsets.nameValuePair user.name

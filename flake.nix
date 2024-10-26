@@ -18,7 +18,20 @@
     home-manager,
     ...
   } @ inputs: let
-    myLib = import ./lib {inherit inputs nixpkgs home-manager;};
+    # System archs
+    systems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    # For All Systems
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+    # Overlays
+    overlays = import ./overlays;
+    # MyLib
+    myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
 
     users = {
       nixos = myLib.mkUser {
@@ -28,6 +41,8 @@
       };
     };
   in {
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
     nixosConfigurations = {
       vm = myLib.mkHost {
         hostname = "vm";

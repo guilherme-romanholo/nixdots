@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   programs.waybar.settings = {
     mainBar = {
       "custom/power" = {
