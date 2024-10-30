@@ -13,10 +13,10 @@
 }: let
   # Nixpkgs Lib
   inherit (nixpkgs) lib;
-  # Home
-  mkHome = import ./mkHome.nix {inherit overlays;};
   # Nixpkgs Pkgs
   pkgs = import nixpkgs {inherit system;};
+  # Home
+  mkHome = import ./mkHome.nix {inherit overlays;};
   # For Users
   forUsers = users: func: builtins.listToAttrs (map func users);
 in
@@ -36,6 +36,7 @@ in
         {
           networking.hostName = hostname;
           system.stateVersion = stateVersion;
+
           users.users = forUsers users (
             user:
               lib.attrsets.nameValuePair user.name
@@ -43,23 +44,18 @@ in
           );
         }
       ]
-      # Home-manager Configuration
-      ++ (
-        if includeHomeManager
-        then [
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.users = forUsers users (
-              user:
-                lib.attrsets.nameValuePair user.name
-                (mkHome {
-                  username = user.name;
-                  inherit hostname;
-                  inherit stateVersion;
-                })
-            );
-          }
-        ]
-        else []
-      );
+      ++ lib.mkIf includeHomeManager [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.users = forUsers users (
+            user:
+              lib.attrsets.nameValuePair user.name
+              (mkHome {
+                username = user.name;
+                inherit hostname;
+                inherit stateVersion;
+              })
+          );
+        }
+      ];
   }
