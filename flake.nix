@@ -18,15 +18,13 @@
     home-manager,
     ...
   } @ inputs: let
-    inherit (nixpkgs) lib;
-    # For All Systems
-    forAllSystems = lib.genAttrs lib.systems.flakeExposed;
-    # Packages with nix build, nix shell, ...
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    # Overlays
-    overlays = import ./overlays;
     # MyLib
     myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
+    # Overlays
+    overlays = import ./overlays;
+    # Packages
+    packages = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
     # Users
     users = {
       nixos = myLib.mkUser {
@@ -35,12 +33,9 @@
         groups = ["wheel" "networkmanager"];
       };
     };
-  in {
-    # Custom packages
-    inherit packages;
 
-    # Nixos Configurations
-    nixosConfigurations = {
+    # Hosts
+    hosts = {
       vm = myLib.mkHost {
         hostname = "vm";
         system = "x86_64-linux";
@@ -48,5 +43,10 @@
         stateVersion = "24.05";
       };
     };
+  in {
+    # Custom packages (nix shell, nix build, ...)
+    inherit packages;
+    # Nixos Configurations
+    nixosConfigurations = hosts;
   };
 }

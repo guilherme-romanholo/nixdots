@@ -11,11 +11,11 @@
   users,
   includeHomeManager ? true,
 }: let
-  # Nixpkgs Lib
+  # Libs
   inherit (nixpkgs) lib;
   # Nixpkgs Pkgs
   pkgs = import nixpkgs {inherit system;};
-  # Home
+  # Make Home
   mkHome = import ./mkHome.nix {inherit overlays;};
   # For Users
   forUsers = users: func: builtins.listToAttrs (map func users);
