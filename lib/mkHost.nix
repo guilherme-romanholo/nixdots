@@ -44,18 +44,22 @@ in
           );
         }
       ]
-      ++ lib.mkIf includeHomeManager [
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.users = forUsers users (
-            user:
-              lib.attrsets.nameValuePair user.name
-              (mkHome {
-                username = user.name;
-                inherit hostname;
-                inherit stateVersion;
-              })
-          );
-        }
-      ];
+      ++ (
+        if includeHomeManager
+        then [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.users = forUsers users (
+              user:
+                lib.attrsets.nameValuePair user.name
+                (mkHome {
+                  username = user.name;
+                  inherit hostname;
+                  inherit stateVersion;
+                })
+            );
+          }
+        ]
+        else []
+      );
   }
