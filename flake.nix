@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     # Home-Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +22,7 @@
     # MyLib
     myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
     # Overlays
-    overlays = import ./overlays;
+    overlays = import ./overlays {inherit inputs;};
     # Packages
     packages = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
