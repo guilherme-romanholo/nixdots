@@ -17,15 +17,16 @@
   };
 
   outputs = {
-    nixpkgs, home-manager,
+    nixpkgs,
+    home-manager,
     ...
   } @ inputs: let
     # Overlays
     overlays = import ./overlays {inherit inputs;};
-    # Nixvim
-    nvim = myLib.forAllSystems (system: myLib.mkNvim {inherit system;});
     # My Lib
     myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
+    # Nixvim
+    nixvim = myLib.forAllSystems (system: myLib.mkNvim {inherit system;});
     # My custom packages
     myPkgs = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
@@ -49,7 +50,7 @@
     };
   in {
     # Custom packages (nix shell, nix build, ...)
-    packages = myPkgs // nvim;
+    packages = myPkgs // nixvim;
     # Nixos Configurations
     nixosConfigurations = hosts;
   };
