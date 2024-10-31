@@ -12,19 +12,22 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     # Stylix
     stylix.url = "github:danth/stylix";
+    # Nixvim
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs = {
-    nixpkgs,
-    home-manager,
+    nixpkgs, home-manager,
     ...
   } @ inputs: let
-    # MyLib
-    myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
     # Overlays
     overlays = import ./overlays {inherit inputs;};
-    # Packages
-    packages = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    # Nixvim
+    nvim = myLib.forAllSystems (system: myLib.mkNvim {inherit system;});
+    # My Lib
+    myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
+    # My custom packages
+    myPkgs = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
     # Users
     users = {
@@ -46,7 +49,7 @@
     };
   in {
     # Custom packages (nix shell, nix build, ...)
-    inherit packages;
+    packages = myPkgs // nvim;
     # Nixos Configurations
     nixosConfigurations = hosts;
   };
