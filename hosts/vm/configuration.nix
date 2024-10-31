@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -15,16 +15,5 @@
 
     openssh.enable = true;
     printer.enable = true;
-
-    stylix = {
-      enable = true;
-
-      wallpaper = ./wallpaper.jpg;
-      polarity = "dark";
-      colorscheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-
-      cursorPkg = "bibata-cursors";
-      cursorName = "Bibata-Modern-Classic";
-    };
   };
 }

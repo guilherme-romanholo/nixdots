@@ -4,7 +4,6 @@
     ./core
     ./sway
     ./docker
-    ./stylix
     ./libvirt
     ./openssh
     ./printer
