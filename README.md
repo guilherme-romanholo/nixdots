@@ -15,6 +15,7 @@
 - [ ] Imports e home state em um só {}
 - [ ] Fazer um AGS para trocar temas
 - [ ] Waybar lateral com degrade de cores
+- [ ] Minha config do nixvim
 
 ### Install:
 
