@@ -1,7 +1,7 @@
 {
   polarity = "dark";
 
-  wallpaper = ./nord_warrior.jpg;
+  wallpaper = ./nord_batman.png;
 
   cursorPkg = "nordzy-cursor-theme";
   cursorName = "Nordzy-cursors";
