@@ -6,7 +6,6 @@
   cfg = config.modules.waybar;
 in {
   imports = [
-    ./style.nix
     ./config.nix
     ./modules.nix
   ];
