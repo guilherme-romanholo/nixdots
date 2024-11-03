@@ -11,6 +11,7 @@
     };
 
     sway.enable = true;
+    wayfire.enable = true;
     graphical.enable = true;
 
     openssh.enable = true;

@@ -7,6 +7,7 @@
     ./libvirt
     ./openssh
     ./printer
+    ./wayfire
     ./graphical
   ];
 }
