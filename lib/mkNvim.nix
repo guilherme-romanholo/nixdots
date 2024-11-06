@@ -13,5 +13,5 @@
     module = import ../modules/nixvim;
   };
 in {
-  nvim = nixvim'.makeNixvimWithModule nixvimModule;
+  nixvim = nixvim'.makeNixvimWithModule nixvimModule;
 }

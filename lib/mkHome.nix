@@ -1,4 +1,7 @@
-{overlays, ...}: {
+{
+  patchedPkgs,
+  ...
+}: {
   username,
   hostname,
   stateVersion,
@@ -18,4 +21,4 @@
 
   systemd.user.startServices = "sd-switch";
 }
-// overlays
+// patchedPkgs

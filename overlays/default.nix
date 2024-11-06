@@ -1,4 +1,4 @@
-{inputs, ...}: let
+{inputs, ...}: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs final.pkgs;
 
@@ -6,7 +6,7 @@
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
     # Custom nixvim overlay
-    neovim = inputs.self.packages.${final.system}.nvim;
+    neovim = inputs.self.packages.${final.system}.nixvim;
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     #
     # });
@@ -17,18 +17,6 @@
     stable = import inputs.nixpkgs-stable {
       system = final.system;
       config.allowUnfree = true;
-    };
-  };
-in {
-  nixpkgs = {
-    overlays = [
-      additions
-      modifications
-      stable-packages
-    ];
-
-    config = {
-      allowUnfree = true;
     };
   };
 }

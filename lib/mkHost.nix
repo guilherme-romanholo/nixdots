@@ -2,7 +2,7 @@
   inputs,
   nixpkgs,
   home-manager,
-  overlays,
+  patchedPkgs,
   ...
 }: {
   hostname,
@@ -16,7 +16,7 @@
   # Nixpkgs Pkgs
   pkgs = import nixpkgs {inherit system;};
   # Make Home
-  mkHome = import ./mkHome.nix {inherit overlays;};
+  mkHome = import ./mkHome.nix {inherit patchedPkgs;};
   # For Users
   forUsers = users: func: builtins.listToAttrs (map func users);
 in
@@ -30,8 +30,8 @@ in
         ../modules/nixos
         ../hosts/${hostname}/configuration.nix
 
-        # Add Overlays
-        overlays
+        # Add Patched Pkgs
+        patchedPkgs
 
         {
           networking.hostName = hostname;

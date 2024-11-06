@@ -27,4 +27,4 @@ OBS: Disko mode mount not erase the disk
 
 ### Run nixvim config:
 
-- nix run .#nvim
+- nix run .#nixvim

@@ -24,11 +24,23 @@
     # Overlays
     overlays = import ./overlays {inherit inputs;};
     # My Lib
-    myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
+    myLib = import ./lib {inherit inputs nixpkgs home-manager patchedPkgs;};
     # Nixvim
     nixvim = myLib.forAllSystems (system: myLib.mkNvim {inherit system;});
     # My custom packages
-    myPkgs = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
+    # Patched nixpkgs
+    patchedPkgs = {
+      nixpkgs = {
+        overlays = [
+          overlays.additions
+          overlays.modifications
+          overlays.stable-packages
+        ];
+        config.allowUnfree = true;
+      };
+    };
 
     # Users
     users = {
@@ -50,7 +62,7 @@
     };
   in {
     # Custom packages (nix shell, nix build, ...)
-    packages = myPkgs // nixvim;
+    packages = packages // nixvim;
     # Nixos Configurations
     nixosConfigurations = hosts;
   };
