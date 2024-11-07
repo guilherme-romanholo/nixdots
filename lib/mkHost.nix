@@ -13,20 +13,20 @@
 }: let
   # Libs
   inherit (nixpkgs) lib;
-  # Nixpkgs Pkgs
-  pkgs = import nixpkgs {inherit system;};
   # Make Home
   mkHome = import ./mkHome.nix {inherit overlays;};
   # For Users
   forUsers = users: func: builtins.listToAttrs (map func users);
+  # Patched Pkgs
+  pkgs = import ./patchPkgs.nix {inherit system nixpkgs overlays;};
 in
   lib.nixosSystem {
+    inherit pkgs;
     inherit system;
     specialArgs = {inherit inputs;};
 
     modules =
       [
-        # Host Specific Configs
         ../modules/nixos
         ../hosts/${hostname}/configuration.nix
 
@@ -39,15 +39,6 @@ in
               lib.attrsets.nameValuePair user.name
               (lib.mkMerge [user.config {shell = pkgs.${user.shell};}])
           );
-
-          nixpkgs = {
-            overlays = [
-              overlays.additions
-              overlays.modifications
-              overlays.stable-packages
-            ];
-            config.allowUnfree = true;
-          };
         }
       ]
       ++ (
@@ -55,6 +46,9 @@ in
         then [
           home-manager.nixosModules.home-manager
           {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
             home-manager.users = forUsers users (
               user:
                 lib.attrsets.nameValuePair user.name
