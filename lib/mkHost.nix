@@ -2,7 +2,7 @@
   inputs,
   nixpkgs,
   home-manager,
-  patchedPkgs,
+  overlays,
   ...
 }: {
   hostname,
@@ -16,7 +16,7 @@
   # Nixpkgs Pkgs
   pkgs = import nixpkgs {inherit system;};
   # Make Home
-  mkHome = import ./mkHome.nix {inherit patchedPkgs;};
+  mkHome = import ./mkHome.nix {inherit overlays;};
   # For Users
   forUsers = users: func: builtins.listToAttrs (map func users);
 in
@@ -30,9 +30,6 @@ in
         ../modules/nixos
         ../hosts/${hostname}/configuration.nix
 
-        # Add Patched Pkgs
-        patchedPkgs
-
         {
           networking.hostName = hostname;
           system.stateVersion = stateVersion;
@@ -42,6 +39,15 @@ in
               lib.attrsets.nameValuePair user.name
               (lib.mkMerge [user.config {shell = pkgs.${user.shell};}])
           );
+
+          nixpkgs = {
+            overlays = [
+              overlays.additions
+              overlays.modifications
+              overlays.stable-packages
+            ];
+            config.allowUnfree = true;
+          };
         }
       ]
       ++ (
