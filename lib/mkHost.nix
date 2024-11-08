@@ -12,10 +12,8 @@
   includeHomeManager ? true,
 }: let
   # Import Libs
-  lib = nixpkgs.lib;
-  myLib = import ./default.nix {inherit inputs overlays;};
-  # Lib Functions
-  inherit (myLib) forUsers patchPkgs mkHome;
+  inherit (nixpkgs) lib;
+  inherit (import ./. {inherit inputs overlays;}) forUsers patchPkgs mkHome;
   # Patched Pkgs
   pkgs = patchPkgs {inherit system;};
 in
