@@ -1,7 +1,4 @@
 {
-  overlays,
-  ...
-}: {
   username,
   hostname,
   stateVersion,

@@ -18,13 +18,12 @@
 
   outputs = {
     nixpkgs,
-    home-manager,
     ...
   } @ inputs: let
     # Overlays
     overlays = import ./overlays {inherit inputs;};
     # My Lib
-    myLib = import ./lib {inherit inputs nixpkgs home-manager overlays;};
+    myLib = import ./lib {inherit inputs overlays;};
     # Nixvim
     nixvim = myLib.forAllSystems (system: myLib.mkNvim {inherit system;});
     # My custom packages

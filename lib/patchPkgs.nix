@@ -1,9 +1,8 @@
 {
-  system,
   nixpkgs,
   overlays,
   ...
-}: import nixpkgs {
+}: {system}: import nixpkgs {
   # System Arch
   inherit system;
   # Overlays
