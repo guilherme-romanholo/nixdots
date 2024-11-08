@@ -2,8 +2,7 @@
   username,
   hostname,
   stateVersion,
-}:
-{
+}: {
   imports = [
     ../users/${username}
     ../modules/home-manager

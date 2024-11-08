@@ -16,10 +16,7 @@
     nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs = {
-    nixpkgs,
-    ...
-  } @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     # Overlays
     overlays = import ./overlays {inherit inputs;};
     # My Lib
