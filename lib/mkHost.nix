@@ -1,7 +1,5 @@
 {
   inputs,
-  nixpkgs,
-  home-manager,
   overlays,
   ...
 }: {
@@ -12,10 +10,9 @@
   includeHomeManager ? true,
 }: let
   # Import Libs
-  inherit (nixpkgs) lib;
-  inherit (import ./. {inherit inputs overlays;}) forUsers patchPkgs mkHome;
+  lib = import ./. {inherit inputs overlays;};
   # Patched Pkgs
-  pkgs = patchPkgs {inherit system;};
+  pkgs = lib.patchPkgs {inherit system;};
 in
   lib.nixosSystem {
     inherit pkgs;
@@ -31,7 +28,7 @@ in
           networking.hostName = hostname;
           system.stateVersion = stateVersion;
 
-          users.users = forUsers users (
+          users.users = lib.forUsers users (
             user:
               lib.attrsets.nameValuePair user.name
               (lib.mkMerge [user.config {shell = pkgs.${user.shell};}])
@@ -40,23 +37,7 @@ in
       ]
       ++ (
         if includeHomeManager
-        then [
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users = forUsers users (
-              user:
-                lib.attrsets.nameValuePair user.name
-                (mkHome {
-                  username = user.name;
-                  inherit hostname;
-                  inherit stateVersion;
-                })
-            );
-          }
-        ]
+        then lib.mkHM.module {inherit users hostname stateVersion;}
         else []
       );
   }

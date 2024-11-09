@@ -17,18 +17,18 @@
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
+    # Lib
+    lib = import ./lib {inherit inputs overlays;};
     # Overlays
     overlays = import ./overlays {inherit inputs;};
-    # My Lib
-    myLib = import ./lib {inherit inputs overlays;};
     # Nixvim
-    nixvim = myLib.forAllSystems (system: myLib.mkNvim {inherit system;});
+    nixvim = lib.forAllSystems (system: lib.mkNvim {inherit system;});
     # My custom packages
-    packages = myLib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = lib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
     # Users
     users = {
-      nixos = myLib.mkUser {
+      nixos = lib.mkUser {
         name = "nixos";
         shell = "fish";
         groups = ["wheel" "networkmanager"];
@@ -37,7 +37,7 @@
 
     # Hosts
     hosts = {
-      vm = myLib.mkHost {
+      vm = lib.mkHost {
         hostname = "vm";
         system = "x86_64-linux";
         users = [users.nixos];
