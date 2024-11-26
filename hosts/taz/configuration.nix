@@ -16,6 +16,16 @@
     inputs.disko.nixosModules.disko
   ];
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+  ];
+
   # Optional
   optional = {
     docker.enable = true;
