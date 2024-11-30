@@ -5,9 +5,10 @@
   authKeys ? [],
 }: {
   inherit name;
-  inherit shell;
 
-  config = {
+  config = {pkgs}: {
+    shell = pkgs.${shell};
+
     isNormalUser = true;
     extraGroups = groups;
 
