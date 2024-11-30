@@ -5,9 +5,10 @@
   authKeys ? [],
 }: {
   inherit name;
-  inherit shell;
 
-  config = {
+  config = {pkgs}: {
+    shell = pkgs.${shell};
+
     isNormalUser = true;
     extraGroups = groups;
 
@@ -15,5 +16,24 @@
 
     initialPassword = "password";
     openssh.authorizedKeys.keys = authKeys;
+  };
+
+  home = {
+    hostname,
+    stateVersion,
+  }: {
+    imports = [
+      ../users/${name}
+      ../modules/home-manager
+      ../hosts/${hostname}/home.nix
+    ];
+
+    home = {
+      username = name;
+      homeDirectory = "/home/${name}";
+      inherit stateVersion;
+    };
+
+    systemd.user.startServices = "sd-switch";
   };
 }
