@@ -7,6 +7,7 @@
   system,
   stateVersion,
   users,
+  includeHomeManager ? true,
 }: let
   # Import Libs
   lib = import ./. {inherit inputs overlays;};
@@ -18,18 +19,24 @@ in
     inherit system;
     specialArgs = {inherit inputs;};
 
-    modules = [
-      ../modules/nixos
-      ../hosts/${hostname}/configuration.nix
+    modules =
+      [
+        ../modules/nixos
+        ../hosts/${hostname}/configuration.nix
 
-      {
-        networking.hostName = hostname;
-        system.stateVersion = stateVersion;
-        users.users = lib.forUsers users (
-          user:
-            lib.attrsets.nameValuePair
-            user.name (user.config {inherit pkgs;})
-        );
-      }
-    ];
+        {
+          networking.hostName = hostname;
+          system.stateVersion = stateVersion;
+          users.users = lib.forUsers users (
+            user:
+              lib.attrsets.nameValuePair
+              user.name (user.config {inherit pkgs;})
+          );
+        }
+      ]
+      ++ (
+        if includeHomeManager
+        then lib.mkHM {inherit users hostname stateVersion;}
+        else []
+      );
   }

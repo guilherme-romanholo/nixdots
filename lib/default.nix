@@ -12,6 +12,7 @@ in
   // {
     # Make Functions
     mkUser = import ./mkUser.nix;
+    mkHM = import ./mkHM.nix {inherit inputs overlays;};
     mkNvim = import ./mkNvim.nix {inherit nixpkgs inputs;};
     mkHost = import ./mkHost.nix {inherit inputs overlays;};
     mkPkgs = import ./mkPkgs.nix {inherit nixpkgs overlays;};
