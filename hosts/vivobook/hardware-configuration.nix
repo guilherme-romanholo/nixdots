@@ -30,10 +30,10 @@
     fsType = "tmpfs";
   };
 
-  fileSystems."/lib/modules/5.15.153.1-microsoft-standard-WSL2" = {
-    device = "none";
-    fsType = "overlay";
-  };
+  # fileSystems."/lib/modules/5.15.153.1-microsoft-standard-WSL2" = {
+  #   device = "none";
+  #   fsType = "overlay";
+  # };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/0302aeca-134f-471b-8f21-01c5213c65b7";

@@ -14,6 +14,11 @@
     ./hardware-configuration.nix
   ];
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   # Core
   core = {
     video.enable = lib.mkForce false;
