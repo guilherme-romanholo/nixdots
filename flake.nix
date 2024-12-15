@@ -25,29 +25,19 @@
     nixvim = lib.forAllSystems (system: lib.mkNvim {inherit system;});
     # My custom packages
     packages = lib.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-
     # Users
-    users = {
-      nixos = lib.mkUser {
-        name = "nixos";
-        shell = "fish";
-        groups = ["wheel" "networkmanager"];
-      };
-    };
-
-    # Hosts
-    hosts = {
-      vm = lib.mkHost {
-        hostname = "vm";
-        system = "x86_64-linux";
-        users = [users.nixos];
-        stateVersion = "24.05";
-      };
-    };
+    users = lib.mkUser ./users;
   in {
     # Custom packages (nix shell, nix build, ...)
     packages = packages // nixvim;
     # Nixos Configurations
-    nixosConfigurations = hosts;
+    nixosConfigurations = {
+      vm = lib.mkHost {
+        hostname = "vm";
+        system = "x86_64-linux";
+        users = with users; [nixos];
+        stateVersion = "24.05";
+      };
+    };
   };
 }

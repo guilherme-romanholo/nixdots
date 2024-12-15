@@ -1,13 +1,5 @@
-{pkgs, ...}: {
-  modules = {
-    fish.enable = true;
-  };
-
-  programs = {
-    firefox.enable = true;
-  };
-
-  home.packages = with pkgs; [
-    vesktop
-  ];
+{
+  name = "nixos";
+  shell = "fish";
+  groups = ["wheel" "networkmanager"];
 }

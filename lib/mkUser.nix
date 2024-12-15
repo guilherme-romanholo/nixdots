@@ -23,8 +23,8 @@
     stateVersion,
   }: {
     imports = [
-      ../users/${name}
       ../modules/home-manager
+      ../users/${name}/home.nix
       ../hosts/${hostname}/home.nix
     ];
 
