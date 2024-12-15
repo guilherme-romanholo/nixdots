@@ -18,7 +18,7 @@ in
     mkUser = dir:
       builtins.listToAttrs (builtins.map (name: {
         name = name;
-        value = import ./mkUser.nix (import ((builtins.toString dir) + "/" + name));
+        value = import ./mkUser.nix (import ((builtins.toString dir) + "/" + name + "/system.nix"));
       }) (builtins.attrNames (builtins.readDir dir)));
 
     # Utils
