@@ -3,32 +3,18 @@
   config,
   pkgs,
   ...
-}: let
-  cfg = config.modules.sound;
+}:
+with lib; let
+  cfg = config.modules.core.sound;
 in {
-  options.modules.sound = {
-    enable = lib.mkEnableOption "Sound";
-
-    pipewire = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Enable Pipewire";
-    };
-
-    jack = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable Jack";
-    };
-
-    pulseaudio = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable Pulseaudio";
-    };
+  options.modules.core.sound = with types; {
+    enable = mkEnableOption "Sound";
+    pipewire = mkOpt bool true;
+    jack = mkOpt bool false;
+    pulseaudio = mkOpt bool false;
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     # Enable sound
     security.rtkit.enable = true;
 

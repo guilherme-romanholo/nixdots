@@ -4,10 +4,12 @@
   ];
 
   modules = {
-    core.enable = true;
+    core = {
+      enable = true;
 
-    bootloader = {
-      device = "/dev/vda";
+      bootloader = {
+        device = "/dev/vda";
+      };
     };
 
     sway.enable = true;

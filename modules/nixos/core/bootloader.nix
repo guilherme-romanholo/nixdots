@@ -2,33 +2,18 @@
   lib,
   config,
   ...
-}: let
-  cfg = config.modules.bootloader;
+}:
+with lib; let
+  cfg = config.modules.core.bootloader;
 in {
-  options.modules.bootloader = {
-    enable = lib.mkEnableOption "Bootloader";
-
-    device = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = "Grub Device";
-    };
-
-    uefi = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable Uefi";
-    };
-
-    OSProber = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable OS Prober";
-    };
+  options.modules.core.bootloader = with types; {
+    enable = mkEnableOption "Bootloader";
+    device = mkOpt str "";
+    uefi = mkOpt bool false;
+    OSProber = mkOpt bool false;
   };
 
-  config = lib.mkIf cfg.enable {
-    # Grub
+  config = mkIf cfg.enable {
     boot.loader.grub = {
       enable = true;
 

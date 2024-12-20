@@ -17,7 +17,7 @@ in
   lib.nixosSystem {
     inherit pkgs;
     inherit system;
-    specialArgs = {inherit inputs;};
+    specialArgs = {inherit inputs lib;};
 
     modules =
       [

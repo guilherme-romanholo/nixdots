@@ -24,4 +24,7 @@ in
     # Utils
     forAllSystems = lib.genAttrs lib.systems.flakeExposed;
     forUsers = users: func: builtins.listToAttrs (map func users);
+
+    # Option
+    mkOpt = type: default: lib.mkOption {inherit type default;};
   }

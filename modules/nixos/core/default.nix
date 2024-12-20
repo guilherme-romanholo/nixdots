@@ -2,7 +2,8 @@
   lib,
   config,
   ...
-}: let
+}:
+with lib; let
   cfg = config.modules.core;
 in {
   imports = [
@@ -14,11 +15,11 @@ in {
   ];
 
   options.modules.core = {
-    enable = lib.mkEnableOption "Core";
+    enable = mkEnableOption "Core";
   };
 
-  config = lib.mkIf cfg.enable {
-    modules = {
+  config = mkIf cfg.enable {
+    modules.core = {
       nix.enable = true;
       sound.enable = true;
       network.enable = true;

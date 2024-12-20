@@ -2,36 +2,19 @@
   lib,
   config,
   ...
-}: let
-  cfg = config.modules.localtime;
+}:
+with lib; let
+  cfg = config.modules.core.localtime;
 in {
-  options.modules.localtime = {
+  options.modules.core.localtime = with types; {
     enable = lib.mkEnableOption "Localtime";
-
-    timezone = lib.mkOption {
-      type = lib.types.str;
-      default = "America/Sao_Paulo";
-      description = "System Timezone";
-    };
-
-    locale = lib.mkOption {
-      type = lib.types.str;
-      default = "pt_BR.UTF-8";
-      description = "System locale";
-    };
-
-    consoleKeymap = lib.mkOption {
-      type = lib.types.str;
-      default = "br-abnt2";
-      description = "System Console Keymap";
-    };
+    timezone = mkOpt str "America/Sao_Paulo";
+    locale = mkOpt str "pt_BR.UTF-8";
+    consoleKeymap = mkOpt str "br-abnt2";
   };
 
   config = lib.mkIf cfg.enable {
-    # Set your time zone.
     time.timeZone = cfg.timezone;
-
-    # Select internationalisation properties.
     i18n.defaultLocale = cfg.locale;
 
     i18n.extraLocaleSettings = {
@@ -48,7 +31,6 @@ in {
       LC_TIME = cfg.locale;
     };
 
-    # Configure console keymap
     console.keyMap = cfg.consoleKeymap;
   };
 }

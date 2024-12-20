@@ -3,29 +3,19 @@
   lib,
   config,
   ...
-}: let
-  cfg = config.modules.nix;
+}:
+with lib; let
+  cfg = config.modules.core.nix;
 in {
-  options.modules.nix = {
-    enable = lib.mkEnableOption "Nix";
-
-    substituters = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [];
-      description = "Trusted Substituters";
-    };
-
-    trustedKeys = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [];
-      description = "Trusted Substituters Keys";
-    };
+  options.modules.core.nix = with types; {
+    enable = mkEnableOption "Nix";
+    substituters = mkOpt (listOf str) [];
+    trustedKeys = mkOpt (listOf str) [];
   };
 
-  config = lib.mkIf cfg.enable {
-    # Nix system configurations
+  config = mkIf cfg.enable {
     nix = let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+      flakeInputs = filterAttrs (_: isType "flake") inputs;
     in {
       settings = {
         experimental-features = "nix-command flakes";

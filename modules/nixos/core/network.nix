@@ -2,26 +2,23 @@
   lib,
   config,
   ...
-}: let
-  cfg = config.modules.network;
+}:
+with lib; let
+  cfg = config.modules.core.network;
 in {
-  options.modules.network = {
-    enable = lib.mkEnableOption "Network";
-
-    networkmanager = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Enable NetworkManager";
-    };
+  options.modules.core.network = with types; {
+    enable = mkEnableOption "Network";
+    networkmanager = mkOpt bool true;
   };
 
-  config = lib.mkIf cfg.enable {
-    # Enable networking
-    networking.networkmanager.enable = cfg.networkmanager;
-    # Extra hosts
-    networking.extraHosts = ''
-      127.0.0.1 localhost
-      ::1 localhost
-    '';
+  config = mkIf cfg.enable {
+    networking = {
+      networkmanager.enable = cfg.networkmanager;
+
+      extraHosts = ''
+        127.0.0.1 localhost
+        ::1 localhost
+      '';
+    };
   };
 }
