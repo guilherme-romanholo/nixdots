@@ -1,6 +1,23 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  den,
+  ...
+}: {
   flake.aspects.impermanence = {
-    includes = [];
+    includes = [
+      ({
+        class,
+        aspect-chain,
+      }:
+        den.forward {
+          each = lib.singleton true;
+          fromClass = _: "persist";
+          intoClass = _: "nixos";
+          intoPath = _: ["environment" "persistence" "/persist"];
+          fromAspect = _: lib.head aspect-chain;
+        })
+    ];
 
     nixos = {
       imports = [

@@ -12,6 +12,12 @@
     "x86_64-linux"
   ];
 
+  _module.args.den = inputs.flake-aspects.lib lib;
+
+  #-----------#
+  #  Outputs  #
+  #-----------#
+
   perSystem.treefmt = {
     projectRootFile = "flake.nix";
 
@@ -21,10 +27,12 @@
     };
   };
 
-  flake.nixosConfigurations = lib.mapAttrs (
-    name: _:
-      inputs.nixpkgs.lib.nixosSystem {
-        modules = [inputs.self.modules.nixos.${name}];
-      }
-  ) (builtins.readDir ./hosts);
+  flake.nixosConfigurations =
+    lib.flip
+    lib.mapAttrs (builtins.readDir ./hosts) (
+      name: _:
+        inputs.nixpkgs.lib.nixosSystem {
+          modules = [inputs.self.modules.nixos.${name}];
+        }
+    );
 }

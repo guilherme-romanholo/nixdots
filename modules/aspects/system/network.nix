@@ -6,6 +6,7 @@
         plugins = with pkgs; [networkmanager-openvpn];
       };
     };
+
     persist.directories = [
       "/var/lib/NetworkManager"
       "/etc/NetworkManager/system-connections"
