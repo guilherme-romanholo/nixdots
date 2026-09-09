@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  den,
   ...
 }: {
   flake.aspects.impermanence = {
@@ -10,7 +9,7 @@
         class,
         aspect-chain,
       }:
-        den.forward {
+        (inputs.flake-aspects.lib lib).forward {
           each = lib.singleton true;
           fromClass = _: "persist";
           intoClass = _: "nixos";

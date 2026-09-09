@@ -12,8 +12,6 @@
     "x86_64-linux"
   ];
 
-  _module.args.den = inputs.flake-aspects.lib lib;
-
   #-----------#
   #  Outputs  #
   #-----------#
@@ -32,7 +30,10 @@
     lib.mapAttrs (builtins.readDir ./hosts) (
       name: _:
         inputs.nixpkgs.lib.nixosSystem {
-          modules = [inputs.self.modules.nixos.${name}];
+          modules = [
+	    {networking.hostName = name;}
+	    inputs.self.modules.nixos.${name}
+	  ];
         }
     );
 }
