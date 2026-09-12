@@ -23,6 +23,10 @@
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Wrappers
+    wrappers.url = "github:nix-community/nix-wrapper-modules";
+    wrappers.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:

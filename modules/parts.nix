@@ -31,9 +31,9 @@
       name: _:
         inputs.nixpkgs.lib.nixosSystem {
           modules = [
-	    {networking.hostName = name;}
-	    inputs.self.modules.nixos.${name}
-	  ];
+            {networking.hostName = name;}
+            inputs.self.modules.nixos.${name}
+          ];
         }
     );
 }
