@@ -14,5 +14,9 @@
         helix
       ];
     };
+
+    persist.users.guilherme = {
+      directories = [".nixdots"];
+    };
   };
 }
